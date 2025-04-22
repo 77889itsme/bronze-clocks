@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/quiz.js') }}"></script>
+
+<div class="container">
+    <br><h2>Choose one to start!</h2> <br><br>
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+          <a href="/learn/color" class="learning-link">
+            <div class="learning-card">
+              <img src="{{ url_for('static', filename='images/父丁爵_color.jpg') }}" alt="Color learning module" class="card-image" />
+            </div>
+            <h3 class="card-title">Color</h3>
+          </a>
+        </div>
+      
+        <div class="col-md-4 text-center">
+          <a href="/learn/motif" class="learning-link">
+            <div class="learning-card">
+              <img src="{{ url_for('static', filename='images/司母戊鼎_motif.jpg') }}" alt="Motif learning module" class="card-image" />
+            </div>
+            <h3 class="card-title">Motif</h3>
+          </a>
+        </div>
+      
+        <div class="col-md-4 text-center">
+          <a href="/learn/shape" class="learning-link">
+            <div class="learning-card">
+              <img src="{{ url_for('static', filename='images/长信宫灯_shape.jpg') }}" alt="Shape learning module" class="card-image" />
+            </div>
+            <h3 class="card-title">Shape</h3>
+          </a>
+        </div>
+      </div>
+      
+ </div>
+
+
+
+{% endblock %}

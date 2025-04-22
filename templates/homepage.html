@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'homepage.js') }}"></script>
+
+
+<header class="hero-section position-relative">
+  <img id="info-image" src="{{ url_for('static', filename='images/wine_pouring_vessel.jpeg') }}" alt="Bronze Clocks Hero" class="img-fluid w-100">
+  
+  <div class="hero-overlay container">
+      <div class="row logo-title">
+          <div class="col-md-6 logo-column">
+            <img src="{{ url_for('static', filename='assets/icons/logo.svg') }}" alt="project logo" class="logo-image">
+          </div>
+          <div class="col-md-6 title-column">
+            <h1>Bronze Clocks</h1>
+            <p class="lead">Reading Time through Bronzeware</p>
+          </div>
+        </div>
+  </div>
+</header>
+
+
+<div class="container">
+    Welcome! This interactive module will guide you through identifying key
+    features of Chinese bronzeware—color, motif, and shape—to help determine
+    its historical period or dynasty.
+    <br/><br/>
+    You'll explore the distinctive colors and styles of bronzeware from the
+    Shang, Western Zhou, Eastern Zhou, and Qin & Han dynasties. Enjoy a
+    gamified quiz experience and get a sneak peek at some of the most iconic
+    pieces in history!  
+    <br><br><br><br>
+
+  <div class="container row">
+    <a href="/learn" class="btn btn-primary me-3">Start Learning!</a>
+    <a href="/quiz" class="btn btn-light">Take a Quiz.</a>    
+  </div>
+</div>
+  
+
+
+
+    
+
+{% endblock %}
