@@ -14,9 +14,9 @@ This project is an interactive educational website designed to teach users about
 
 ## 📂 Project Structure
 - `server.py`: Main entry point of the application.
+- `utils.py`: Helper functions for calculating user responses.
 - `static/`: Static resources (CSS, JS, images).
 - `templates/`: Jinja2-based HTML templates.
-- `utils.py`: Helper functions for calculating user responses.
 - `data/`: Stores quiz questions and motif metadata.
 
 
