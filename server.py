@@ -31,9 +31,17 @@ def learn_color_section_page():
 def learn_motif_section_page():
    return render_template('learn_motif.html')
 
+@app.route('/learn/motif/<int:page_num>')
+def learn_motif_pages():
+   return render_template('learn_motif_pages.html')
+
 @app.route('/learn/shape')
 def learn_shape_section_page():
    return render_template('learn_shape.html')
+
+@app.route('/learn/shape/<int:page_num>')
+def learn_shape_pages():
+   return render_template('learn_shape_pages.html')
 
 @app.route('/quiz')
 def quiz_start():
