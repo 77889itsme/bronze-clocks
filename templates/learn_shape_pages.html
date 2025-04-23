@@ -6,7 +6,7 @@
 <script>
     let info = {{info|tojson}}
     let currentPage = {{ page_num|int }};
-  </script>
+</script>
   
 
 <div class="container">
@@ -16,7 +16,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-1"></div>
+            <div id="navButtonPrevious" class="col-md-1"></div>
 
             <div class="col-md-6">
                 <h2 id="shape-title">Title here</h2>
@@ -24,13 +24,16 @@
                 <span id="shape-content">
                     Text here
                 </span>
+                <br><br>
+
+                <div id="final-page" class="container"></div>
             </div>
 
             <div class="col-md-4">
                 <img id="shape-image" alt="image here">
             </div>
 
-            <div class="col-md-1"></div>
+            <div id="navButtonNext" class="col-md-1"></div>
 
         </div>
 
