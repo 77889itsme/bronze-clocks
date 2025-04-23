@@ -78,7 +78,9 @@
 function attachLinks(linkList, currentPage=NaN) {
   linkList.forEach((item, index) => {
     // always set base style
-    $(item.selector).find("text").addClass("timeline-date-light");
+    $(item.selector).find("text")
+      .removeClass("timeline-date-dark")
+      .addClass("timeline-date-light");
     $(item.selector).css("cursor", "pointer");
 
     // always attach click
@@ -254,7 +256,7 @@ function disableTimelineHover() {
         />
   
         <g class="shang-group" id="shang-group">
-            <text class="dynasty-label shang-label" x="242" y="207.182" role="text" text-anchor="middle">
+            <text class="dynasty-label shang-label timeline-date-dark" x="242" y="207.182" role="text" text-anchor="middle">
                 Shang Dynasty
             </text>
             <rect
@@ -271,7 +273,7 @@ function disableTimelineHover() {
 
 
         <g class="zhou-west-group" id="zhou-west-group">
-            <text class="dynasty-label zhou-west-label" role="text" text-anchor="middle">
+            <text class="dynasty-label zhou-west-label timeline-date-dark" role="text" text-anchor="middle">
                 <tspan x="515" y="197.182">Western</tspan>
                 <tspan x="515" y="231.182">Zhou</tspan>
                 <tspan x="515" y="265.182">Dynasty</tspan>
@@ -290,7 +292,7 @@ function disableTimelineHover() {
 
 
         <g class="zhou-east-group" id="zhou-east-group">
-            <text class="dynasty-label zhou-east-label" x="787" y="207.182" role="text" text-anchor="middle">
+            <text class="dynasty-label zhou-east-label timeline-date-dark" x="787" y="207.182" role="text" text-anchor="middle">
                 Eastern Zhou Dynasty
             </text>
             <rect
@@ -306,7 +308,7 @@ function disableTimelineHover() {
         </g>
 
         <g class="qinhan-group" id="qinhan-group">
-            <text class="dynasty-label qinhan-label" x="1112" y="207.182" role="text" text-anchor="middle">
+            <text class="dynasty-label qinhan-label timeline-date-dark" x="1112" y="207.182" role="text" text-anchor="middle">
                 Qin &amp; Han Dynasty
             </text>
             <rect
