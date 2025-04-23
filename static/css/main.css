@@ -9,8 +9,7 @@ a {
     color: var(--accent-color);
 }
 
-.bold {
-    font-weight: bold;
+.bold {font-weight: bold;
 }
 
 .footer {
