@@ -14,6 +14,23 @@ function attachLinks() {
     });
 }
 
+
+function updateView(){
+    let title = info.title;
+    $('#shape-title').html(title);
+
+    let subtitle = info.subtitle;
+    $('#shape-subtitle').html(subtitle);
+
+    let content = info.content;
+    $('#shape-content').html(content);
+
+    let imgPath = info.image_path; 
+    $('#shape-image').attr('src', '/' + imgPath);
+    
+}
+
 $(document).ready(function () {
-    attachLinks()
+    attachLinks();
+    updateView()
 });  

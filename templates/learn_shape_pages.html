@@ -2,13 +2,39 @@
 
 {% block content %}
 
-<script type="text/javascript" src="{{ url_for('static', filename = 'js/c') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/learn_shape_pages.js') }}"></script>
+<script>
+    let info = {{info|tojson}}
+    let currentPage = {{ page_num|int }};
+  </script>
+  
 
 <div class="container">
 
 
     {% include "timeline.html" %}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-6">
+                <h2 id="shape-title">Title here</h2>
+                <h3 id="shape-subtitle">Subtitle here</h3>
+                <span id="shape-content">
+                    Text here
+                </span>
+            </div>
+
+            <div class="col-md-4">
+                <img id="shape-image" alt="image here">
+            </div>
+
+            <div class="col-md-1"></div>
+
+        </div>
+
+    </div>
       
  </div>
 

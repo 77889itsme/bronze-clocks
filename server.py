@@ -7,10 +7,13 @@ import urllib.parse
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE_QUIZ = os.path.join(BASE_DIR, "data/quiz.json") 
+DATA_FILE_QUIZ = os.path.join(BASE_DIR, "data/quiz.json")
+DATA_FILE_SHAPE =  os.path.join(BASE_DIR, "data/shape.json")
 
 quiz_data = load_data(DATA_FILE_QUIZ)
 quiz_len = len(quiz_data)
+
+shape_data = load_data(DATA_FILE_SHAPE)
 
 app = Flask(__name__)
 
@@ -32,7 +35,7 @@ def learn_motif_section_page():
    return render_template('learn_motif.html')
 
 @app.route('/learn/motif/<int:page_num>')
-def learn_motif_pages():
+def learn_motif_pages(page_num):
    return render_template('learn_motif_pages.html')
 
 @app.route('/learn/shape')
@@ -40,8 +43,10 @@ def learn_shape_section_page():
    return render_template('learn_shape.html')
 
 @app.route('/learn/shape/<int:page_num>')
-def learn_shape_pages():
-   return render_template('learn_shape_pages.html')
+def learn_shape_pages(page_num):
+   id = page_num - 1
+   info = shape_data[id]
+   return render_template('learn_shape_pages.html', page_num=page_num, info=info)
 
 @app.route('/quiz')
 def quiz_start():

@@ -1,27 +1,27 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "title": "Jue",
     "subtitle": "The Ritual Wine Warmer",
     "content": "A jue is used to serve warm wine during rituals. Its particular shape—flared, pointed, triangular legs; ovoid body; long curved spout counterbalanced with a pointed flange; and two columnar protrusions—makes jue one of the most easily identifiable ancient Chinese bronze and pottery vessel forms. In later periods, jue were still made for ritual use and Qing-dynasty (1644–1912); examples often have elongated legs.",
     "image_path": "static/images/爵.jpg"
   },
   {
-    "id": 2,
+    "id": 1,
     "title": "Ding",
     "subtitle": "The Three-legged Cauldron",
     "content": "The ding is a three-legged cauldron used for cooking or sacrificial offerings. During the Western Zhou, the ding evolved from a purely ritual vessel into a potent emblem of state power and legitimacy. <br><br>The number of ding a noble could possess was strictly regulated by rank: emperors were entitled to 9, feudal lords to 7, ministers to 5, and scholar-bureaucrats to 3 or 1. This system made the ding a visible marker of social hierarchy and authority.",
     "image_path": "static/images/毛公鼎.jpg"
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "Sword",
     "subtitle": NaN,
     "content": "Swords became the most iconic bronze artifacts of this period due to advancements in metallurgy and the shift toward infantry-based warfare. <br><br>These weapons were not only functional but also artistic masterpieces.",
     "image_path": "static/images/越王勾践剑.jpeg"
   },
   {
-    "id": 4,
+    "id": 3,
     "title": "Human-Shaped Figures",
     "subtitle": NaN,
     "content": "Human-shaped bronze artifacts became prominent during the Qin and Han dynasties, which reflects philosophical ideals about immortality and cosmic harmony. <br><br> These figures were often used in burial contexts or as ceremonial objects.",
