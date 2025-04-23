@@ -1,5 +1,16 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, url_for, request
+from utils import load_data, select_ids
+import os
+import json
+import urllib.parse
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE_QUIZ = os.path.join(BASE_DIR, "data/quiz.json") 
+
+quiz_data = load_data(DATA_FILE_QUIZ)
+quiz_len = len(quiz_data)
 
 app = Flask(__name__)
 
@@ -13,8 +24,26 @@ def learning_section_page():
    return render_template('learn.html')
 
 @app.route('/quiz')
-def quiz_page():
-   return render_template('quiz.html')
+def quiz_start():
+    ids = select_ids(quiz_len, 5)
+    encoded_ids = urllib.parse.quote(json.dumps(ids))
+    return redirect(url_for('quiz_page', page_num=1, ids=encoded_ids))
+
+@app.route('/quiz/<int:page_num>')
+def quiz_page(page_num):
+    encoded_ids = request.args.get('ids')
+    if not encoded_ids:
+        return "Missing quiz ID list", 400
+    try:
+        import json, urllib.parse
+        ids = json.loads(urllib.parse.unquote(encoded_ids))
+    except Exception:
+        return "Invalid ID format", 400
+    if page_num < 1 or page_num > len(ids):
+        return "Invalid quiz page", 404
+    quiz_id = ids[page_num - 1]
+    info = quiz_data[quiz_id]
+    return render_template('quiz.html', info=info)
 
 # AJAX FUNCTIONS
 

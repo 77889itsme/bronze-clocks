@@ -44,6 +44,23 @@
   fill-opacity: 0.8;
 }
 
+.shang-group:hover .dynasty-period,
+.zhou-west-group:hover .dynasty-period,
+.zhou-east-group:hover .dynasty-period,
+.qinhan-group:hover .dynasty-period {
+  fill: #D2E7E3;
+  fill-opacity: 0.7;
+  cursor: pointer;
+}
+
+.shang-group:hover .dynasty-label,
+.zhou-west-group:hover .dynasty-label,
+.zhou-east-group:hover .dynasty-label,
+.qinhan-group:hover .dynasty-label {
+  fill: #4A9A8C;
+  transition: all 0.2s ease;
+}
+
 /* Accessibility Enhancements */
 .timeline-svg:focus {
   outline: 2px solid #000;
@@ -73,11 +90,6 @@
 <body>
 
 <div class="timeline-container">
-    <div
-      class="timeline-wrapper"
-      role="region"
-      aria-label="Chinese Dynasties Timeline"
-    >
       <svg
         class="timeline-svg"
         width="1325"
@@ -88,13 +100,6 @@
         role="img"
         aria-labelledby="timeline-title timeline-desc"
         >
-        <title id="timeline-title">
-          Chinese Dynasties Timeline from 1600 BC to 220 AD
-        </title>
-        <desc id="timeline-desc">
-          A visual timeline showing major Chinese dynasties including Shang,
-          Western Zhou, Eastern Zhou, and Qin & Han dynasties
-        </desc>
   
         <!-- Timeline Arrow -->
         <path
@@ -112,9 +117,10 @@
         <text
           class="timeline-date"
           fill="black"
-          x="363.295"
+          x="425"
           y="78.1818"
           role="text"
+          text-anchor="middle"
         >
           1046 BC
         </text>
@@ -122,9 +128,10 @@
         <text
           class="timeline-date"
           fill="black"
-          x="552.471"
+          x="606"
           y="78.1818"
           role="text"
+          text-anchor="middle"
         >
           770 BC
         </text>
@@ -132,16 +139,17 @@
         <text
           class="timeline-date"
           fill="black"
-          x="913.311"
+          x="969"
           y="78.1818"
           role="text"
+          text-anchor="middle"
         >
           221 BC
         </text>
   
         <text
           class="timeline-date timeline-date-light"
-          x="1105.03"
+          x="1120"
           y="27.1818"
           role="text"
         >
@@ -160,100 +168,105 @@
   
         <!-- Vertical Lines -->
         <line
-          x1="419.403"
+          x1="425"
           y1="90"
-          x2="419.403"
+          x2="425"
           y2="140"
           stroke="black"
           role="graphics-symbol"
         />
         <line
-          x1="599.83"
+          x1="606"
           y1="90"
-          x2="599.83"
+          x2="606"
           y2="140"
           stroke="black"
           role="graphics-symbol"
         />
         <line
-          x1="960.5"
+          x1="969"
           y1="90"
-          x2="960.5"
+          x2="969"
           y2="140"
           stroke="black"
           role="graphics-symbol"
         />
         <line
-          x1="1095.5"
-          x2="1095.5"
+          x1="1112"
+          x2="1112"
           y2="140"
           stroke="#D8D8D8"
           role="graphics-symbol"
         />
   
-        <!-- Dynasty Labels -->
-        <text class="dynasty-label" x="136.436" y="207.182" role="text">
-          Shang Dynasty
-        </text>
-  
-        <text class="dynasty-label" role="text">
-          <tspan x="452.422" y="197.182">Western</tspan>
-          <tspan x="475.131" y="231.182">Zhou</tspan>
-          <tspan x="453.775" y="265.182">Dynasty</tspan>
-        </text>
-  
-        <text class="dynasty-label" x="629.207" y="207.182" role="text">
-          Eastern Zhou Dynasty
-        </text>
-  
-        <text class="dynasty-label" x="983.371" y="207.182" role="text">
-          Qin &amp; Han Dynasty
-        </text>
-  
-        <!-- Dynasty Period Indicators -->
-        <rect
-          class="dynasty-period"
-          x="60"
-          y="140"
-          width="360"
-          height="20"
-          rx="10"
-          role="graphics-symbol"
-          aria-label="Shang Dynasty period"
-        />
-  
-        <rect
-          class="dynasty-period"
-          x="420"
-          y="140"
-          width="180"
-          height="20"
-          rx="10"
-          role="graphics-symbol"
-          aria-label="Western Zhou Dynasty period"
-        />
-  
-        <rect
-          class="dynasty-period"
-          x="600"
-          y="140"
-          width="360"
-          height="20"
-          rx="10"
-          role="graphics-symbol"
-          aria-label="Eastern Zhou Dynasty period"
-        />
-  
-        <rect
-          class="dynasty-period"
-          x="960"
-          y="140"
-          width="300"
-          height="20"
-          rx="10"
-          role="graphics-symbol"
-          aria-label="Qin and Han Dynasty period"
-        />
+        <g class="shang-group">
+            <text class="dynasty-label shang-label" x="242" y="207.182" role="text" text-anchor="middle">
+                Shang Dynasty
+            </text>
+            <rect
+                class="dynasty-period shang-period"
+                x="60"
+                y="140"
+                width="364"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Shang Dynasty period"
+            />
+        </g>
+
+
+        <g class="zhou-west-group">
+            <text class="dynasty-label zhou-west-label" role="text" text-anchor="middle">
+                <tspan x="515" y="197.182">Western</tspan>
+                <tspan x="515" y="231.182">Zhou</tspan>
+                <tspan x="515" y="265.182">Dynasty</tspan>
+            </text>
+            <rect
+                class="dynasty-period zhou-west-period"
+                x="424"
+                y="140"
+                width="182"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Western Zhou Dynasty period"
+            />
+        </g>
+
+
+        <g class="zhou-east-group">
+            <text class="dynasty-label zhou-east-label" x="787" y="207.182" role="text" text-anchor="middle">
+                Eastern Zhou Dynasty
+            </text>
+            <rect
+                class="dynasty-period zhou-east-period"
+                x="606"
+                y="140"
+                width="362.1"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Eastern Zhou Dynasty period"
+            />
+        </g>
+
+        <g class="qinhan-group">
+            <text class="dynasty-label qinhan-label" x="1112" y="207.182" role="text" text-anchor="middle">
+                Qin &amp; Han Dynasty
+            </text>
+            <rect
+                class="dynasty-period qinhan-period"
+                x="968"
+                y="140"
+                width="290.8"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Qin and Han Dynasty period"
+            />
+        </g>
+
       </svg>
 
     </div>

@@ -9,6 +9,10 @@ a {
     color: var(--accent-color);
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .footer {
     padding-top: 150px;
 }
@@ -25,6 +29,10 @@ a {
     height: 30%;
     width: 60%;
     background-color: #ffffff99;
+}
+
+.logo-and-title {
+    padding-left: 10px;
 }
 
 .logo-column {
