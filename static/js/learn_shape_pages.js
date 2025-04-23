@@ -1,3 +1,10 @@
+let linkList = [
+    { selector: "#shang-group", url: "/learn/shape/1" },
+    { selector: "#zhou-west-group", url: "/learn/shape/2" },
+    { selector: "#zhou-east-group", url: "/learn/shape/3" },
+    { selector: "#qinhan-group", url: "/learn/shape/4" }
+];
+
 function updateButtons(){
     let prevBtn = "";
     if (currentPage > 1) {
@@ -6,7 +13,7 @@ function updateButtons(){
     
     let nextBtn = "";
     if (currentPage < 4) {
-        nextBtn = `<a href="/learn/shape/${currentPage + 1}" class="btn btn-light">Next</a>`;
+        nextBtn = `<a href="/learn/shape/${currentPage + 1}" class="btn btn-primary">Next</a>`;
     }
     
     $('#navButtonPrevious').html(`
@@ -46,6 +53,7 @@ function updateView(){
 }
 
 $(document).ready(function () {
-    attachLinks();
+    attachLinks(linkList, currentPage)
+    enableTimelineHover();
     updateView()
 });  

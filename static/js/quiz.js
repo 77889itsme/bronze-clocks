@@ -94,6 +94,8 @@ function updateAnswer(){
 }
 
 $(document).ready(function () {
+    disableTimelineHover();
+
     updateExihibit();
     updateMarkerPosition(-1600);
   
