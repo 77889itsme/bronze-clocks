@@ -34,12 +34,6 @@
     font-weight: bold;
 }
   
-#sliderResult {
-    text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
-}
-  
 .center-button {
     text-align: center;
     margin-top: 10px;
@@ -63,6 +57,12 @@
 
 .text-container {
     margin-top: 200px;
+}
+
+#time-answer-container {
+    height: 60px;
+    position: relative; 
+    z-index: 1;
 }
   
   

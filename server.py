@@ -43,7 +43,7 @@ def quiz_page(page_num):
         return "Invalid quiz page", 404
     quiz_id = ids[page_num - 1]
     info = quiz_data[quiz_id]
-    return render_template('quiz.html', info=info)
+    return render_template('quiz.html', info=info, encoded_ids=encoded_ids, page_num=page_num)
 
 # AJAX FUNCTIONS
 

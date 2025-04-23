@@ -35,6 +35,59 @@ function updateMarkerPosition(val) {
     $('#sliderMarker').css('left', left + 'px');
 }
 
+function updateAnswerBox(){
+    let startTime = info.start_time;
+    let endTime = info.end_time;
+
+    let xStart = 60 + (startTime + 1600) * 0.65934;
+    let xEnd = 60 + (endTime + 1600) * 0.65934;
+    let width = xEnd - xStart;
+
+    $('#answer-rect').remove();
+
+    let $rect = $(document.createElementNS("http://www.w3.org/2000/svg", "rect"))
+        .attr({
+            id: "answer-rect",
+            x: xStart,
+            y: -120,
+            width: width,
+            height: 20,
+            rx: 10,
+            fill: "rgba(255, 165, 0, 0.4)",
+        });
+
+    $('#answer-box').append($rect);
+}
+
+function calculateScore(selectedYear, correctYear = -500) {
+    let diff = Math.abs(selectedYear - correctYear);
+    if (diff === 0) return 100;
+    else if (diff <= 50) return 80;
+    else if (diff <= 100) return 60;
+    else return 40;
+}
+
+
+function updateAnswer(){
+    $('#slider').hide(); 
+    updateAnswerBox();
+
+    let startTime = info.start_time;
+    let endTime = info.end_time;
+    let selectedYear = parseInt($('#timelineSlider').val());
+    correctYear = (startTime + endTime) / 2
+    let score = calculateScore(selectedYear, correctYear);
+    $('#sliderResult').html("Your Guess: " + selectedYear);
+    $('#scoreResult').html(`<p>Your score: <strong>${score}</strong></p>`);
+
+    if (currentPage < 5) {
+        const nextUrl = `/quiz/${currentPage + 1}?ids=${encodedIds}`;
+        $('#nextPageButton').html(`<a href="${nextUrl}" class="btn btn-success mt-3">Next Question</a>`);
+    } else {
+        $('#nextPageButton').html(`<p class="mt-3">You’ve reached the last question.</p>`);
+    }
+}
+
 $(document).ready(function () {
     updateExihibit();
     updateMarkerPosition(-1600);
@@ -44,9 +97,7 @@ $(document).ready(function () {
     });
   
     $('#confirmYear').click(function () {
-      const selectedYear = parseInt($('#timelineSlider').val());
-      $('#sliderResult').text("Selected: " + selectedYear);
-      console.log("玩家选择的年份为:", selectedYear);
+      updateAnswer();
   
       // 你可以在这里把 selectedYear 存入 localStorage/sessionStorage/发 AJAX 等
       // localStorage.setItem('guessYear', selectedYear);

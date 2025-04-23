@@ -7,54 +7,57 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/quiz.css')}}">
 <script>
   let info = {{info|tojson}}
+  let currentPage = {{ page_num|int }};
+  let encodedIds = "{{ encoded_ids }}";
 </script>
 
+<br>
 
 <div class="container">
-  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <img id="quiz-image" alt="image here">
+    </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <img id="quiz-image" alt="image here">
+    <div class="col-md-6 text-container">
+      <h2>Which Dynasty?</h2> <br><br>
+
+      <div class="container">
+        <span id="name-en">Descriptive English Name</span>
+      </div>
+      <div class="container">
+        <span id="name-cn" class="bold">中文名</span>
+        <span id="name-pinyin">Pin Yin</span>
       </div>
 
-      <div class="col-md-6 text-container">
-        <h2>Which Dynasty?</h2> <br><br>
-
-        <div class="container">
-          <span id="name-en">Descriptive English Name</span>
-        </div>
-        <div class="container">
-          <span id="name-cn" class="bold">中文名</span>
-          <span id="name-pinyin">Pin Yin</span>
-        </div>
-
-        <br><br>
-        <div class="container">
-          <span id="findspot">findspot</span> <br>
-          <span id="museum">museum</span>
-        </div>
-
+      <br><br>
+      <div class="container">
+        <span id="findspot">findspot</span> <br>
+        <span id="museum">museum</span>
       </div>
+
     </div>
   </div>
-
-  {% include "timeline.html" %}
-
-  <div class="timeline-slider-wrapper">
-    <input type="range"class="form-range" id="timelineSlider" min="-1600" max="220" step="1" value="-1600">
-    <div class="slider-marker" id="sliderMarker"></div>
-  </div>
-  
-  <div class="center-button">
-    <button class="btn btn-primary" id="confirmYear">Confirm Year</button>
-  </div>
-  
-  <div id="sliderResult">Selected: -1600</div>  
-
 </div>
 
+
+{% include "timeline.html" %}
+
+<div class="timeline-slider-wrapper" id="slider">
+  <input type="range"class="form-range" id="timelineSlider" min="-1600" max="220" step="1" value="-1600">
+  <div class="slider-marker" id="sliderMarker"></div>
+</div>
+
+<svg id="answer-box" width="1325" height="40"></svg>
+
+
+<div class="center-button">
+  <button class="btn btn-primary" id="confirmYear">Confirm Year</button>
+</div>
+  
+<div id="sliderResult"></div> 
+<div id="scoreResult"></div>
+<div id="nextPageButton"></div> 
 
 
 {% endblock %}
