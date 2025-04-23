@@ -1,24 +1,3 @@
-function attachLinks() {
-    let linkList = [
-        { selector: "#shang-group", url: "/learn/shape/1" },
-        { selector: "#zhou-west-group", url: "/learn/shape/2" },
-        { selector: "#zhou-east-group", url: "/learn/shape/3" },
-        { selector: "#qinhan-group", url: "/learn/shape/4" }
-    ];
-
-    linkList.forEach((item, index) => {
-        $(item.selector).find("text").css("fill", "#d8d8d8");
-        if (index + 1 === currentPage) {
-            $(item.selector).find("text").css("fill", "#2f2f2f");
-            $(item.selector).find("rect").css("fill", "#4a9a8c");
-        }
-        $(item.selector).css("cursor", "pointer");
-        $(item.selector).click(() => {
-            window.location.href = item.url;
-        });
-    });
-}
-
 function updateButtons(){
     let prevBtn = "";
     if (currentPage > 1) {
