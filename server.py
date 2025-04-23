@@ -23,6 +23,10 @@ def homepage():
 def learning_section_page():
    return render_template('learn.html')
 
+@app.route('/learn/color')
+def learn_color_section_page():
+   return render_template('learn_color.html')
+
 @app.route('/quiz')
 def quiz_start():
     ids = select_ids(quiz_len, 5)
