@@ -103,8 +103,5 @@ $(document).ready(function () {
   
     $('#confirmYear').click(function () {
       updateAnswer();
-  
-      // 你可以在这里把 selectedYear 存入 localStorage/sessionStorage/发 AJAX 等
-      // localStorage.setItem('guessYear', selectedYear);
     });
 });  
