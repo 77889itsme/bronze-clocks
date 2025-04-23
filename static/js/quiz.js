@@ -35,10 +35,7 @@ function updateMarkerPosition(val) {
     $('#sliderMarker').css('left', left + 'px');
 }
 
-function updateAnswerBox(){
-    let startTime = info.start_time;
-    let endTime = info.end_time;
-
+function updateAnswerBox(startTime, endTime) {
     let xStart = 60 + (startTime + 1600) * 0.65934;
     let xEnd = 60 + (endTime + 1600) * 0.65934;
     let width = xEnd - xStart;
@@ -61,24 +58,19 @@ function updateAnswerBox(){
 
 function calculateScore(selectedYear, correctYear = -500) {
     let diff = Math.abs(selectedYear - correctYear);
-    if (diff === 0) return 100;
-    else if (diff <= 50) return 80;
-    else if (diff <= 100) return 60;
+    if (diff <= 100) return 100;
+    else if (diff <= 200) return 80;
+    else if (diff <= 300) return 60;
     else return 40;
 }
 
-
-function updateAnswer(){
-    $('#slider').hide(); 
-    updateAnswerBox();
-
-    let startTime = info.start_time;
-    let endTime = info.end_time;
+function updateFeedback(startTime, endTime){
     let selectedYear = parseInt($('#timelineSlider').val());
     correctYear = (startTime + endTime) / 2
     let score = calculateScore(selectedYear, correctYear);
     $('#sliderResult').html("Your Guess: " + selectedYear);
     $('#scoreResult').html(`<p>Your score: <strong>${score}</strong></p>`);
+    $('#correctTime').html(`<p>Correct Time: ${startTime} – ${endTime}</p>`);
 
     if (currentPage < 5) {
         const nextUrl = `/quiz/${currentPage + 1}?ids=${encodedIds}`;
@@ -86,6 +78,19 @@ function updateAnswer(){
     } else {
         $('#nextPageButton').html(`<p class="mt-3">You’ve reached the last question.</p>`);
     }
+}
+
+
+function updateAnswer(){
+    let startTime = info.start_time;
+    let endTime = info.end_time;
+
+    $('#slider').hide(); 
+    updateAnswerBox(startTime, endTime);
+    updateFeedback(startTime, endTime);
+
+    let url = info.url;
+    $('#detailURL').html(`<a href="${url}" target="_blank">Learn More</a>`);
 }
 
 $(document).ready(function () {
