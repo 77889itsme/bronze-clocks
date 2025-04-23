@@ -31,12 +31,15 @@
   fill: #d8d8d8;
 }
 
+.timeline-date-dark {
+  fill: #2f2f2f;
+}
+
 .dynasty-label {
   pointer-events: visiblePainted;
   font-family: "Inter", sans-serif;
   font-size: 28px;
   font-weight: 700;
-  fill: #2f2f2f;
   letter-spacing: 0;
 }
 
@@ -85,7 +88,9 @@ function attachLinks(linkList, currentPage=NaN) {
 
     // optionally highlight current page
     if (currentPage && index + 1 === currentPage) {
-      $(item.selector).find("text").css("fill", "#2f2f2f");
+      $(item.selector).find("text")
+        .removeClass("timeline-date-light")
+        .addClass("timeline-date-dark");
       $(item.selector).find("rect").css("fill", "#4a9a8c");
     }
   });
