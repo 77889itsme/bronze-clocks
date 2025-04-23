@@ -1,0 +1,262 @@
+<style>
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.timeline-container {
+  width: 100%;
+  max-width: 1325px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.timeline-svg {
+  width: 100%;
+  height: auto;
+  max-width: 1325px;
+}
+
+.timeline-date {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.timeline-date-light {
+  fill: #d8d8d8;
+}
+
+.dynasty-label {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  fill: #2f2f2f;
+  letter-spacing: 0;
+}
+
+.dynasty-period {
+  fill: #d8d8d8;
+  fill-opacity: 0.8;
+}
+
+/* Accessibility Enhancements */
+.timeline-svg:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 10px;
+  }
+
+  .timeline-date,
+  .dynasty-label {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-date,
+  .dynasty-label {
+    font-size: 16px;
+  }
+}
+</style>
+
+<body>
+
+<div class="timeline-container">
+    <div
+      class="timeline-wrapper"
+      role="region"
+      aria-label="Chinese Dynasties Timeline"
+    >
+      <svg
+        class="timeline-svg"
+        width="1325"
+        height="271"
+        viewBox="0 0 1325 271"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-labelledby="timeline-title timeline-desc"
+        >
+        <title id="timeline-title">
+          Chinese Dynasties Timeline from 1600 BC to 220 AD
+        </title>
+        <desc id="timeline-desc">
+          A visual timeline showing major Chinese dynasties including Shang,
+          Western Zhou, Eastern Zhou, and Qin & Han dynasties
+        </desc>
+  
+        <!-- Timeline Arrow -->
+        <path
+          d="M1304.54 153.536C1306.49 151.583 1306.49 148.417 1304.54 146.464L1272.72 114.645C1270.76 112.692 1267.6 112.692 1265.64 114.645C1263.69 116.597 1263.69 119.763 1265.64 121.716L1293.93 150L1265.64 178.284C1263.69 180.237 1263.69 183.403 1265.64 185.355C1267.6 187.308 1270.76 187.308 1272.72 185.355L1304.54 153.536ZM51 150V155H1301V150V145H51V150Z"
+          fill="black"
+          role="graphics-symbol"
+          aria-label="Timeline arrow"
+        />
+  
+        <!-- Date Labels -->
+        <text class="timeline-date" fill="black" x="0" y="78.1818" role="text">
+          c. 1600 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="363.295"
+          y="78.1818"
+          role="text"
+        >
+          1046 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="552.471"
+          y="78.1818"
+          role="text"
+        >
+          770 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="913.311"
+          y="78.1818"
+          role="text"
+        >
+          221 BC
+        </text>
+  
+        <text
+          class="timeline-date timeline-date-light"
+          x="1105.03"
+          y="27.1818"
+          role="text"
+        >
+          AD 1
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="1195.84"
+          y="78.1818"
+          role="text"
+        >
+          AD 220
+        </text>
+  
+        <!-- Vertical Lines -->
+        <line
+          x1="419.403"
+          y1="90"
+          x2="419.403"
+          y2="140"
+          stroke="black"
+          role="graphics-symbol"
+        />
+        <line
+          x1="599.83"
+          y1="90"
+          x2="599.83"
+          y2="140"
+          stroke="black"
+          role="graphics-symbol"
+        />
+        <line
+          x1="960.5"
+          y1="90"
+          x2="960.5"
+          y2="140"
+          stroke="black"
+          role="graphics-symbol"
+        />
+        <line
+          x1="1095.5"
+          x2="1095.5"
+          y2="140"
+          stroke="#D8D8D8"
+          role="graphics-symbol"
+        />
+  
+        <!-- Dynasty Labels -->
+        <text class="dynasty-label" x="136.436" y="207.182" role="text">
+          Shang Dynasty
+        </text>
+  
+        <text class="dynasty-label" role="text">
+          <tspan x="452.422" y="197.182">Western</tspan>
+          <tspan x="475.131" y="231.182">Zhou</tspan>
+          <tspan x="453.775" y="265.182">Dynasty</tspan>
+        </text>
+  
+        <text class="dynasty-label" x="629.207" y="207.182" role="text">
+          Eastern Zhou Dynasty
+        </text>
+  
+        <text class="dynasty-label" x="983.371" y="207.182" role="text">
+          Qin &amp; Han Dynasty
+        </text>
+  
+        <!-- Dynasty Period Indicators -->
+        <rect
+          class="dynasty-period"
+          x="60"
+          y="140"
+          width="360"
+          height="20"
+          rx="10"
+          role="graphics-symbol"
+          aria-label="Shang Dynasty period"
+        />
+  
+        <rect
+          class="dynasty-period"
+          x="420"
+          y="140"
+          width="180"
+          height="20"
+          rx="10"
+          role="graphics-symbol"
+          aria-label="Western Zhou Dynasty period"
+        />
+  
+        <rect
+          class="dynasty-period"
+          x="600"
+          y="140"
+          width="360"
+          height="20"
+          rx="10"
+          role="graphics-symbol"
+          aria-label="Eastern Zhou Dynasty period"
+        />
+  
+        <rect
+          class="dynasty-period"
+          x="960"
+          y="140"
+          width="300"
+          height="20"
+          rx="10"
+          role="graphics-symbol"
+          aria-label="Qin and Han Dynasty period"
+        />
+      </svg>
+
+    </div>
+</div>
+  
+</body>
