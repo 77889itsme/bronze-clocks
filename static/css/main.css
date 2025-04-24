@@ -109,4 +109,10 @@ a {
     margin: auto;
     object-fit: cover;
 }
-  
+
+.motif-image {
+    width: 600px;
+    height: 800px;
+    margin: auto;
+    object-fit: cover;
+}

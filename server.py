@@ -15,6 +15,7 @@ quiz_data = load_data(DATA_FILE_QUIZ)
 quiz_len = len(quiz_data)
 
 shape_data = load_data(DATA_FILE_SHAPE)
+motif_data = load_data(DATA_FILE_MOTIF)
 
 app = Flask(__name__)
 
@@ -38,7 +39,7 @@ def learn_motif_section_page():
 @app.route('/learn/motif/<int:page_num>')
 def learn_motif_pages(page_num):
    id = page_num - 1
-   info = shape_data[id]
+   info = motif_data[id]
    return render_template('learn_motif_pages.html', page_num=page_num, info=info)
 
 @app.route('/learn/shape')
@@ -53,9 +54,9 @@ def learn_shape_pages(page_num):
 
 @app.route('/quiz')
 def quiz_start():
-    ids = select_ids(quiz_len, 5)
-    encoded_ids = urllib.parse.quote(json.dumps(ids))
-    return redirect(url_for('quiz_page', page_num=1, ids=encoded_ids))
+   ids = select_ids(quiz_len, 5)
+   encoded_ids = urllib.parse.quote(json.dumps(ids))
+   return redirect(url_for('quiz_page', page_num=1, ids=encoded_ids))
 
 @app.route('/quiz/<int:page_num>')
 def quiz_page(page_num):
