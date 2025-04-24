@@ -1,4 +1,4 @@
-# BronzeClock: A Web-based Interactive Learning Tool
+# BronzeClock
 
 ## 📌 Overview
 This project is an interactive educational website designed to teach users about ancient Chinese bronzeware, including its motifs, colors, and historical context.  
