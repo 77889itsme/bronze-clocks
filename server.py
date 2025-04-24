@@ -8,7 +8,8 @@ import urllib.parse
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE_QUIZ = os.path.join(BASE_DIR, "data/quiz.json")
-DATA_FILE_SHAPE =  os.path.join(BASE_DIR, "data/shape.json")
+DATA_FILE_SHAPE = os.path.join(BASE_DIR, "data/shape.json")
+DATA_FILE_MOTIF = os.path.join(BASE_DIR, "data/motif.json")
 
 quiz_data = load_data(DATA_FILE_QUIZ)
 quiz_len = len(quiz_data)
@@ -36,6 +37,8 @@ def learn_motif_section_page():
 
 @app.route('/learn/motif/<int:page_num>')
 def learn_motif_pages(page_num):
+   id = page_num - 1
+   info = shape_data[id]
    return render_template('learn_motif_pages.html')
 
 @app.route('/learn/shape')
