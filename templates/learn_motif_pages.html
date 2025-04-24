@@ -3,6 +3,10 @@
 {% block content %}
 
 <script type="text/javascript" src="{{ url_for('static', filename = 'js/learn_motif_pages.js') }}"></script>
+<script>
+    let info = {{info|tojson}}
+    let currentPage = {{ page_num|int }};
+</script>
 
 <div class="container">
 

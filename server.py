@@ -39,7 +39,7 @@ def learn_motif_section_page():
 def learn_motif_pages(page_num):
    id = page_num - 1
    info = shape_data[id]
-   return render_template('learn_motif_pages.html')
+   return render_template('learn_motif_pages.html', page_num=page_num, info=info)
 
 @app.route('/learn/shape')
 def learn_shape_section_page():
