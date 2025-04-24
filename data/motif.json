@@ -2,53 +2,155 @@
   {
     "id": 0,
     "period": "Shang Dynasty",
+    "image_path": "static/images/鸢鼎.jpeg",
     "motifs": [
       {
-        "title": "Taotie Motif",
-        "content": "The taotie motif is a frontal zoomorphic mask with large eyes, horns, and fangs. It often appears symmetrical and integrated with geometric patterns. <br><br> This motif symbolizes spiritual power and protection during rituals."
+        "title": "Kuilong Motif",
+        "content": "The Kuilong (Dragon) motif depicts a long-bodied creature shown in profile, often with curved tails and phoenix-like crests. <br><br> It represents divine guardianship and cosmic harmony.",
+        "motif_image_path": "static/images/夔龙纹.png",
+        "overlay": [
+          {
+            "position_left": 21.0,
+            "position_top": 19.0,
+            "size_w": 25,
+            "size_h": 3
+          }
+        ]
       },
       {
-        "title": "Kuilong Motif",
-        "content": "The Kuilong (Dragon) motif depicts a long-bodied creature shown in profile, often with curved tails and phoenix-like crests. <br><br> It represents divine guardianship and cosmic harmony."
+        "title": "Taotie Motif",
+        "content": "The taotie motif is a frontal zoomorphic mask with large eyes, horns, and fangs. It often appears symmetrical and integrated with geometric patterns. <br><br> This motif symbolizes spiritual power and protection during rituals.",
+        "motif_image_path": "static/images/饕餮纹.png",
+        "overlay": [
+          {
+            "position_left": 26.0,
+            "position_top": 23.0,
+            "size_w": 15,
+            "size_h": 9
+          }
+        ]
       }
-    ],
-    "image_path": "static/images/司母戊鼎1.jpg"
+    ]
   },
   {
     "id": 1,
     "period": "Western Zhou Dynasty",
+    "image_path": "static/images/毛公鼎.jpg",
     "motifs": [
       {
         "title": "Inscriptions",
-        "content": "Long inscriptions recording historical events or familial lineage became central decorative features on bronzeware."
+        "content": "Long inscriptions recording historical events or familial lineage became central decorative features on bronzeware.",
+        "motif_image_path": "static/images/鸢鼎.jpeg",
+        "overlay": [
+          {
+            "position_left": 23.0,
+            "position_top": 17.0,
+            "size_w": 20,
+            "size_h": 7
+          }
+        ]
       }
-    ],
-    "image_path": "static/images/毛公鼎.jpg"
+    ]
   },
   {
     "id": 2,
     "period": "Eastern Zhou Dynasty",
+    "image_path": "static/images/曾侯乙尊盘.jpg",
     "motifs": [
       {
         "title": "Panchi Motif",
-        "content": "The panchi motif features curly dragons with slender bodies, often arranged in dense, continuous, and symmetrical patterns. They are designed to connect seamlessly in all four directions (up, down, left, right)."
+        "content": "The panchi motif features curly dragons with slender bodies, often arranged in dense, continuous, and symmetrical patterns. They are designed to connect seamlessly in all four directions (up, down, left, right).",
+        "motif_image_path": "static/images/蟠螭纹.png",
+        "overlay": [
+          {
+            "position_left": 23.0,
+            "position_top": 5.0,
+            "size_w": 19,
+            "size_h": 6
+          },
+          {
+            "position_left": 15.0,
+            "position_top": 16.0,
+            "size_w": 9,
+            "size_h": 3
+          },
+          {
+            "position_left": 14.0,
+            "position_top": 22.0,
+            "size_w": 9,
+            "size_h": 4
+          },
+          {
+            "position_left": 42.0,
+            "position_top": 21.0,
+            "size_w": 11,
+            "size_h": 4
+          },
+          {
+            "position_left": 41.0,
+            "position_top": 16.0,
+            "size_w": 9,
+            "size_h": 3
+          }
+        ]
       }
-    ],
-    "image_path": "static/images/曾侯乙尊盘.jpg"
+    ]
   },
   {
     "id": 3,
     "period": "Qin and Han Dynasty",
+    "image_path": "static/images/博山炉2.jpg",
     "motifs": [
       {
-        "title": "Mountain",
-        "content": "Mountain motifs became a defining feature of Han dynasty incense burners, especially the boshanlu, where the lids were cast in the form of miniature peaks."
+        "title": "Cloud",
+        "content": "Auspicious cloud motifs are among the most enduring and meaningful symbols in Chinese culture. In the Han dynasty, cloud motifs were formalized into elegant, swirling scrolls.",
+        "motif_image_path": "static/images/祥云纹.png",
+        "overlay": [
+          {
+            "position_left": 30.5,
+            "position_top": 14.5,
+            "size_w": 3,
+            "size_h": 2
+          },
+          {
+            "position_left": 27.0,
+            "position_top": 18.0,
+            "size_w": 12,
+            "size_h": 2
+          }
+        ]
       },
       {
-        "title": "Cloud",
-        "content": "Auspicious cloud motifs are among the most enduring and meaningful symbols in Chinese culture. In the Han dynasty, cloud motifs were formalized into elegant, swirling scrolls."
+        "title": "Mountain",
+        "content": "Mountain motifs became a defining feature of Han dynasty incense burners, especially the boshanlu, where the lids were cast in the form of miniature peaks.",
+        "motif_image_path": "static/images/山纹.png",
+        "overlay": [
+          {
+            "position_left": 30.0,
+            "position_top": 16.0,
+            "size_w": 3,
+            "size_h": 3
+          },
+          {
+            "position_left": 28.0,
+            "position_top": 14.5,
+            "size_w": 2,
+            "size_h": 3
+          },
+          {
+            "position_left": 34.0,
+            "position_top": 14.5,
+            "size_w": 2,
+            "size_h": 3
+          },
+          {
+            "position_left": 30.0,
+            "position_top": 11.5,
+            "size_w": 5,
+            "size_h": 3
+          }
+        ]
       }
-    ],
-    "image_path": "static/images/博山炉2.png"
+    ]
   }
 ]

@@ -111,8 +111,38 @@ a {
 }
 
 .motif-image {
-    width: 600px;
-    height: 800px;
-    margin: auto;
-    object-fit: cover;
+    max-height: 50rem;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+}
+
+.hotspot {
+    position: absolute;
+    width: 15rem;
+    height: 9rem;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px dashed rgba(255, 0, 0, 0.3);
+}
+
+.motif-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
 }
