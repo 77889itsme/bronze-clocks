@@ -202,5 +202,29 @@
     "end_time": -113,
     "image_path": "static/images/长信宫灯.png",
     "url": "https://apiwenwu.hebeimuseum.org.cn/news/show/id/17.html"
+  },
+  {
+    "id": 17,
+    "name_chinese": "大盂鼎",
+    "name_pinyin": "Da Yu Ding",
+    "name_en": "Ritual Cauldron (Ding) of Duke Yu",
+    "findspot": "Qishan, Shaanxi",
+    "museum": "National Museum of China",
+    "start_time": -1040,
+    "end_time": -1003,
+    "image_path": "static/images/大盂鼎.png",
+    "url": "https://www.chnmuseum.cn/portals/0/web/zt/202106dayuding/"
+  },
+  {
+    "id": 18,
+    "name_chinese": "大克鼎",
+    "name_pinyin": "Da Ke Ding",
+    "name_en": "Ritual Cauldron (Ding) of Duke Ke",
+    "findspot": "Fufeng, Shaanxi",
+    "museum": "Shanghai Museum",
+    "start_time": -950,
+    "end_time": -886,
+    "image_path": "static/images/大克鼎.png",
+    "url": "https://www.shanghaimuseum.net/resource/museum_files/show_files/20151104094055028/index.html"
   }
 ]
