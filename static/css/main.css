@@ -120,24 +120,28 @@ a {
     object-fit: contain;
 }
 
+.motif-content-image {
+    max-width: 10rem;
+    height: auto;
+    max-height: 100%;
+}
+
 .hotspot {
     position: absolute;
-    width: 15rem;
-    height: 9rem;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0);
-    border: 2px dashed rgba(255, 0, 0, 0.3);
 }
 
 .motif-overlay {
     display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 8px;
+    z-index: 1001;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .overlay-content {

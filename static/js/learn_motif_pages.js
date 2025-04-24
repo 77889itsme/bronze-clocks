@@ -35,19 +35,6 @@ function updateButtons(){
     }
 }
 
-
-function updateHotSpot() {  
-    $('.hotspot').on('click', function () {
-        const answer = $(this).data('answer');
-        $('#overlayText').text(answer);
-        $('#motifOverlay').fadeIn();
-    });
-    
-    $('#motifOverlay').on('click', function () {
-        $(this).fadeOut();
-    });
-}
-
 function updateView() {
     let period = info.period;
     let motifs = info.motifs || [];
@@ -61,20 +48,53 @@ function updateView() {
 
     $('#motif-period').text(period);
 
-    $.each(motifs, function(index, motif) {
-        let $section = $(`
-            <div class="mb-4">
-                <h4>${motif.title}</h4>
-                <p>${motif.content}</p>
-            </div>
-        `);
-        $('#motif-content').append($section);
+    motifs.forEach((motif) => {
+        $('#motif-image')    
+            .attr('src', `/${info.image_path}`)
+            .attr('alt', 'Motif Image')
+            .addClass('img-fluid rounded');  
+
+        let $title = $(`<h4>${motif.title}</h4>`);
+        let $content = $(`<p>${motif.content}</p>`)
+        let $image = $(`<img>`).attr('src', `/${motif.motif_image_path}`).addClass("motif-content-image")
+        $('#motif-content')
+            .append($title)
+            .append($content)
+            .append($image); 
+    
+        let overlays = motif.overlay || [];
+        overlays.forEach((overlay) => {
+            let $rect = $(`<div></div>`)
+                .addClass("hotspot")
+                .css({
+                    left: overlay.position_left + "rem",
+                    top: overlay.position_top + "rem",
+                    width: overlay.size_w + "rem",
+                    height: overlay.size_h + "rem"
+                })
+                .attr("data-answer", motif.title)
+            $(".motif-image-container").append($rect)
+            
+            $rect.on('click', function () {
+                let offset = $(this).position();  // 相对于 .motif-image-container
+                let answer = $(this).data('answer');
+
+                $('#overlayText').text(answer);
+                $('#motifOverlay')
+                    .css({
+                        display: 'flex', // 使用 flex 居中 overlay-content
+                        position: 'absolute',
+                        top: offset.top + 'px',
+                        left: offset.left + 'px'
+                    })
+                    .fadeIn();
+            });
+        });
     });
 
-    $('#motif-image')    
-    .attr('src', `/${info.image_path}`)
-    .attr('alt', 'Motif Image')
-    .addClass('img-fluid rounded');  
+    $('#motifOverlay').on('click', function () {
+        $(this).fadeOut();
+    });
 }
 
 
@@ -83,5 +103,4 @@ $(document).ready(function () {
     enableTimelineHover();
     updateButtons();
     updateView();
-    updateHotSpot();
 });  
