@@ -53,14 +53,13 @@ function updateView() {
             .attr('src', `/${info.image_path}`)
             .attr('alt', 'Motif Image')
             .addClass('img-fluid rounded');  
-
+        
+        let $card = $('<div class="motif-card"></div>');
         let $title = $(`<h4>${motif.title}</h4>`);
         let $content = $(`<p>${motif.content}</p>`)
         let $image = $(`<img>`).attr('src', `/${motif.motif_image_path}`).addClass("motif-content-image")
-        $('#motif-content')
-            .append($title)
-            .append($content)
-            .append($image); 
+        $card.append($title).append($content).append($image);
+        $('#motif-content').append($card);
     
         let overlays = motif.overlay || [];
         overlays.forEach((overlay) => {
@@ -76,18 +75,22 @@ function updateView() {
             $(".motif-image-container").append($rect)
             
             $rect.on('click', function () {
-                let offset = $(this).position();  // 相对于 .motif-image-container
+                let offset = $(this).position();
                 let answer = $(this).data('answer');
-
-                $('#overlayText').text(answer);
+            
+                $('#overlayAnswerText').text(answer);
                 $('#motifOverlay')
                     .css({
-                        display: 'flex', // 使用 flex 居中 overlay-content
-                        position: 'absolute',
                         top: offset.top + 'px',
-                        left: offset.left + 'px'
+                        left: (offset.left + 20) + 'px',
+                        display: 'flex'
                     })
                     .fadeIn();
+            });
+            
+            $('#closeOverlay').on('click', function (e) {
+                e.stopPropagation(); 
+                $('#motifOverlay').fadeOut();
             });
         });
     });
