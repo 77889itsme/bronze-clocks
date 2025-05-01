@@ -5,6 +5,29 @@
     --dark-grey: #777777;
 }
 
+
+body {
+    background-color: #F6F1EB; 
+}
+
+
+html {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+  
+.page-footer {
+    background-color: rgb(75 70 74);
+    color: #fff;
+    padding: 20px;
+}
+  
+
 a {
     color: var(--accent-color);
 }

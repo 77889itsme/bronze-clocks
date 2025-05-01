@@ -46,7 +46,7 @@ function updateView(){
     $('#shape-subtitle').html(subtitle);
 
     let content = info.content;
-    $('#shape-content').html(content);
+    $('#shape-content').html(content).addClass("main-text");
 
     let imgPath = info.image_path; 
     $('#shape-image').attr('src', '/' + imgPath);

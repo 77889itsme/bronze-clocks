@@ -1,0 +1,315 @@
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.timeline-container {
+  width: 100%;
+  max-width: 1325px;
+  margin: 0 auto;
+}
+
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.timeline-svg {
+  width: 100%;
+  height: auto;
+  max-width: 1325px;
+}
+
+.timeline-date {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.timeline-date-light {
+  fill: #CCCCCC;
+}
+
+.timeline-date-dark {
+  fill: #777777;
+}
+
+.dynasty-label {
+  pointer-events: visiblePainted;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.dynasty-period {
+  fill: #CCCCCC;
+  fill-opacity: 0.8;
+}
+
+/* Accessibility Enhancements */
+.timeline-svg:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 10px;
+  }
+
+  .timeline-date,
+  .dynasty-label {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-date,
+  .dynasty-label {
+    font-size: 16px;
+  }
+}
+</style>
+
+<script>
+function attachLinks(linkList, currentPage=NaN) {
+  linkList.forEach((item, index) => {
+    // always set base style
+    $(item.selector).find("text")
+      .removeClass("timeline-date-dark")
+      .addClass("timeline-date-light");
+    $(item.selector).css("cursor", "pointer");
+
+    // always attach click
+    $(item.selector).click(() => {
+      window.location.href = item.url;
+    });
+
+    // optionally highlight current page
+    if (currentPage && index + 1 === currentPage) {
+      $(item.selector).find("text")
+        .removeClass("timeline-date-light")
+        .addClass("timeline-date-dark");
+      $(item.selector).find("rect").css("fill", "#4a9a8c");
+    }
+  });
+}
+
+function enableTimelineHover() {
+  let styleTagId = 'dynamic-hover-style';
+  
+  if ($('#' + styleTagId).length === 0) {
+    const hoverCSS = `
+      .shang-group:hover .dynasty-period,
+      .zhou-west-group:hover .dynasty-period,
+      .zhou-east-group:hover .dynasty-period,
+      .qinhan-group:hover .dynasty-period {
+        fill: #D2E7E3;
+        fill-opacity: 0.7;
+      }
+
+      .shang-group:hover .dynasty-label,
+      .zhou-west-group:hover .dynasty-label,
+      .zhou-east-group:hover .dynasty-label,
+      .qinhan-group:hover .dynasty-label {
+        fill: #4A9A8C;
+        transition: all 0.2s ease;
+      }
+
+      .shang-group text,
+      .shang-group rect,
+      .zhou-west-group text,
+      .zhou-west-group rect,
+      .zhou-east-group text,
+      .zhou-east-group rect,
+      .qinhan-group text,
+      .qinhan-group rect {
+        pointer-events: visiblePainted;
+      }
+    `;
+    $('<style>', {
+      id: styleTagId,
+      text: hoverCSS
+    }).appendTo('head');
+  }
+}
+
+function disableTimelineHover() {
+  $('#dynamic-hover-style').remove();
+}
+
+</script>
+
+<body>
+
+<div class="timeline-container">
+      <svg
+        class="timeline-svg"
+        width="1325"
+        height="200"
+        viewBox="0 0 1325 200"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-labelledby="timeline-title timeline-desc"
+        >
+  
+        <!-- Timeline Arrow -->
+        <g transform="translate(0, -60)"> 
+            <path
+            d="M1304.54 153.536C1306.49 151.583 1306.49 148.417 1304.54 146.464L1272.72 114.645C1270.76 112.692 1267.6 112.692 1265.64 114.645C1263.69 116.597 1263.69 119.763 1265.64 121.716L1293.93 150L1265.64 178.284C1263.69 180.237 1263.69 183.403 1265.64 185.355C1267.6 187.308 1270.76 187.308 1272.72 185.355L1304.54 153.536ZM51 150V155H1301V150V145H51V150Z"
+            fill="black"
+            role="graphics-symbol"
+            aria-label="Timeline arrow"
+          />
+        </g>
+  
+        <!-- Date Labels -->
+        <text class="timeline-date" fill="black" x="0" y="50" role="text">
+          c. 1600 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="425"
+          y="50"
+          role="text"
+          text-anchor="middle"
+        >
+          1046 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="606"
+          y="50"
+          role="text"
+          text-anchor="middle"
+        >
+          770 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="969"
+          y="50"
+          role="text"
+          text-anchor="middle"
+        >
+          221 BC
+        </text>
+  
+        <text
+          class="timeline-date"
+          fill="black"
+          x="1195.84"
+          y="50"
+          role="text"
+        >
+          AD 220
+        </text>
+  
+        <!-- Vertical Lines -->
+        <line
+          x1="425"
+          y1="55"
+          x2="425"
+          y2="95"
+          stroke="black"
+          role="graphics-symbol"
+        />
+        <line
+          x1="606"
+          y1="55"
+          x2="606"
+          y2="95"
+          stroke="black"
+          role="graphics-symbol"
+        />
+        <line
+          x1="969"
+          y1="55"
+          x2="969"
+          y2="95"
+          stroke="black"
+          role="graphics-symbol"
+        />
+  
+        <g class="shang-group" id="shang-group">
+            <text class="dynasty-label shang-label timeline-date-dark" x="242" y="140" role="text" text-anchor="middle">
+                Shang Dynasty
+            </text>
+            <rect
+                class="dynasty-period shang-period"
+                x="60"
+                y="80"
+                width="364"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Shang Dynasty period"
+            />
+        </g>
+
+
+        <g class="zhou-west-group" id="zhou-west-group">
+            <text class="dynasty-label zhou-west-label timeline-date-dark" role="text" text-anchor="middle">
+                <tspan x="515" y="140">Western</tspan>
+                <tspan x="515" y="165">Zhou</tspan>
+                <tspan x="515" y="190">Dynasty</tspan>
+            </text>
+            <rect
+                class="dynasty-period zhou-west-period"
+                x="424"
+                y="80"
+                width="182"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Western Zhou Dynasty period"
+            />
+        </g>
+
+
+        <g class="zhou-east-group" id="zhou-east-group">
+            <text class="dynasty-label zhou-east-label timeline-date-dark" x="787" y="140" role="text" text-anchor="middle">
+                Eastern Zhou Dynasty
+            </text>
+            <rect
+                class="dynasty-period zhou-east-period"
+                x="606"
+                y="80"
+                width="362.1"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Eastern Zhou Dynasty period"
+            />
+        </g>
+
+        <g class="qinhan-group" id="qinhan-group">
+            <text class="dynasty-label qinhan-label timeline-date-dark" x="1112" y="140" role="text" text-anchor="middle">
+                Qin &amp; Han Dynasty
+            </text>
+            <rect
+                class="dynasty-period qinhan-period"
+                x="968"
+                y="80"
+                width="290.8"
+                height="20"
+                rx="10"
+                role="graphics-symbol"
+                aria-label="Qin and Han Dynasty period"
+            />
+        </g>
+
+      </svg>
+
+    </div>
+</div>
+  
+</body>
