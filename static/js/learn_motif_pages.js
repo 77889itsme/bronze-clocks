@@ -58,7 +58,12 @@ function updateView() {
         let $title = $(`<h4>${motif.title}</h4>`);
         let $content = $(`<p>${motif.content}</p>`)
         let $image = $(`<img>`).attr('src', `/${motif.motif_image_path}`).addClass("motif-content-image")
-        $card.append($title).append($content).append($image);
+        let $hint = $('<p style="font-size: 0.9rem; color: #888;">Click to expand</p>');
+
+        $card.append($title).append($hint).append($image).append($content);
+        $card.on('click', function () {
+            $(this).toggleClass('expanded');
+        });
         $('#motif-content').append($card);
     
         let overlays = motif.overlay || [];

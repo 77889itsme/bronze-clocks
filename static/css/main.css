@@ -6,6 +6,17 @@
 }
 
 
+.hotspot-test {
+    position: absolute;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px dashed rgba(255, 0, 0, 0.3);
+    left: 7rem;
+    top: 15rem;
+    width: 18rem;
+    height: 6rem;
+}
+
 body {
     background-color: #F6F1EB; 
 }
@@ -215,12 +226,20 @@ a {
   
 .motif-card {
     width: 30rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    max-height: 10rem; /* 初始高度 */
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    background-color: #fff;
+    transition: max-height 0.3s ease;
+    cursor: pointer;
+    background-color: #f9f9f9;
 }
+
+.motif-card.expanded {
+    max-height: 30rem;
+}
+  
   
 .motif-content-image {
     width: 100%;
