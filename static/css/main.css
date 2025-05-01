@@ -1,5 +1,5 @@
 :root {
-    --base-color: #7A5C35;
+    --base-color: #F6F1EB;
     --accent-color: #4A9A8C;
     --light-grey: #CCCCCC;
     --dark-grey: #777777;
@@ -9,7 +9,70 @@ a {
     color: var(--accent-color);
 }
 
-.bold {font-weight: bold;
+.custom-navbar {
+    background-color: var(--dark-grey);
+    height: 4rem;
+}
+  
+.custom-navbar .navbar-brand,
+.custom-navbar .navbar-collapse .nav-link {
+    color: white;
+}
+  
+.custom-navbar .navbar-collapse .nav-link:hover {
+    color: var(--light-grey)
+}
+  
+
+.banner {
+    width: 700px;
+    height: 200px;
+    object-fit: cover; 
+    object-position: center; 
+}
+
+.title-box {
+    margin-top: 20px;
+}
+
+.main-text p {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.big {
+    font-size: larger;
+}
+
+.title {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.2rem;
+    color: #000;
+}
+  
+.subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.btn-primary {
+    background-color: var(--accent-color); 
+}
+  
+.btn-primary:hover {
+    background-color: #7fa09b;
 }
 
 .footer {
@@ -17,30 +80,17 @@ a {
 }
 
 .hero-section {
-    position: relative;
-    height: 900px; 
+    background-color: var(--base-color); 
+    color: var(--dark-grey); 
 }
-
-.hero-overlay {
-    position: absolute;
-    top: 40%;
-    left: 20%;
-    height: 30%;
-    width: 60%;
-    background-color: #ffffff99;
-}
+  
 
 .logo-and-title {
     padding-left: 10px;
 }
 
-.logo-column {
-    display: flex;
-    flex-direction: column;
-}
-  
 .logo-image {
-    width: 200px;
+    width: 100px;
     min-width: 20px;
     margin: auto;
 }
