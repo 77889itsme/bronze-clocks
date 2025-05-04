@@ -6,17 +6,6 @@
 }
 
 
-.hotspot-test {
-    position: absolute;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0);
-    border: 2px dashed rgba(255, 0, 0, 0.3);
-    left: 7rem;
-    top: 15rem;
-    width: 18rem;
-    height: 6rem;
-}
-
 body {
     background-color: #F6F1EB; 
 }
@@ -230,7 +219,7 @@ a {
     overflow: hidden;
     border: 1px solid #ccc;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1rem 2rem;
     transition: max-height 0.3s ease;
     cursor: pointer;
     background-color: #f9f9f9;
@@ -239,17 +228,14 @@ a {
 .motif-card.expanded {
     max-height: 30rem;
 }
-  
-  
+
 .motif-content-image {
-    width: 100%;
-    height: auto;
+    height: 6rem;
+    width: 12rem;
     object-fit: cover;
     margin-bottom: 0.5rem;
-    border-radius: 4px;
 }
   
-
 .motif-overlay {
     display: none;
     position: absolute;
@@ -257,18 +243,19 @@ a {
 }
 
 .overlay-content {
-    position: relative; /* 为 .close-btn 提供定位上下文 */
+    position: relative;
     background-color: rgba(255, 255, 255, 0.5);
-    padding: 40px;
+    padding: 1rem;
+    overflow: auto;
 }
 
 .close-btn {
     position: absolute;
-    top: 6px;
-    right: 10px;
+    top: 1rem;
+    right: 0rem;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 1rem;
     color: #555;
     cursor: pointer;
     transition: color 0.2s;

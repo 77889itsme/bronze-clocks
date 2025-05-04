@@ -55,14 +55,17 @@ function updateView() {
             .addClass('img-fluid rounded');  
         
         let $card = $('<div class="motif-card"></div>');
-        let $title = $(`<h4>${motif.title}</h4>`);
-        let $content = $(`<p>${motif.content}</p>`)
+        let $header = $('<div class="d-flex align-items-center justify-content-between"></div>');
+        let $title = $(`<p>${motif.title}</p>`).addClass("subtitle bold");
+        let $content = $(`<p>${motif.content}</p>`).addClass("main-text")
         let $image = $(`<img>`).attr('src', `/${motif.motif_image_path}`).addClass("motif-content-image")
         let $hint = $('<p style="font-size: 0.9rem; color: #888;">Click to expand</p>');
 
-        $card.append($title).append($hint).append($image).append($content);
+        $header.append($title).append($hint);
+        $card.append($image).append($header).append($content);
         $card.on('click', function () {
             $(this).toggleClass('expanded');
+            $($hint).empty()
         });
         $('#motif-content').append($card);
     
@@ -80,14 +83,14 @@ function updateView() {
             $(".motif-image-container").append($rect)
             
             $rect.on('click', function () {
-                let offset = $(this).position();
                 let answer = $(this).data('answer');
-            
                 $('#overlayAnswerText').text(answer);
                 $('#motifOverlay')
                     .css({
-                        top: offset.top + 'px',
-                        left: (offset.left + 20) + 'px',
+                        left: overlay.position_left + overlay.size_w/3 + "rem",
+                        top: overlay.position_top  + overlay.size_h/3 + "rem",
+                        width: "10rem",
+                        height: "3rem",
                         display: 'flex'
                     })
                     .fadeIn();

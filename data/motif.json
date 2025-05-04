@@ -10,10 +10,10 @@
         "motif_image_path": "static/images/夔龙纹.png",
         "overlay": [
           {
-            "position_left": 21.0,
-            "position_top": 19.0,
-            "size_w": 25,
-            "size_h": 3
+            "position_left": 11.0,
+            "position_top": 16.0,
+            "size_w": 11,
+            "size_h": 7
           }
         ]
       },
@@ -23,10 +23,10 @@
         "motif_image_path": "static/images/饕餮纹.png",
         "overlay": [
           {
-            "position_left": 26.0,
-            "position_top": 23.0,
-            "size_w": 15,
-            "size_h": 9
+            "position_left": 6.0,
+            "position_top": 13.0,
+            "size_w": 20,
+            "size_h": 3
           }
         ]
       }
@@ -43,10 +43,10 @@
         "motif_image_path": "static/images/鸢鼎.jpeg",
         "overlay": [
           {
-            "position_left": 23.0,
-            "position_top": 17.0,
-            "size_w": 20,
-            "size_h": 7
+            "position_left": 6.0,
+            "position_top": 15.0,
+            "size_w": 18,
+            "size_h": 6
           }
         ]
       }
@@ -55,7 +55,7 @@
   {
     "id": 2,
     "period": "Eastern Zhou Dynasty",
-    "image_path": "static/images/曾侯乙尊盘.jpg",
+    "image_path": "static/images/曾侯乙尊盘2.png",
     "motifs": [
       {
         "title": "Panchi Motif",
@@ -63,34 +63,34 @@
         "motif_image_path": "static/images/蟠螭纹.png",
         "overlay": [
           {
-            "position_left": 23.0,
-            "position_top": 5.0,
-            "size_w": 19,
-            "size_h": 6
-          },
-          {
-            "position_left": 15.0,
-            "position_top": 16.0,
-            "size_w": 9,
-            "size_h": 3
-          },
-          {
-            "position_left": 14.0,
-            "position_top": 22.0,
-            "size_w": 9,
-            "size_h": 4
-          },
-          {
-            "position_left": 42.0,
-            "position_top": 21.0,
+            "position_left": 10.0,
+            "position_top": 2.5,
             "size_w": 11,
-            "size_h": 4
+            "size_h": 3
           },
           {
-            "position_left": 41.0,
-            "position_top": 16.0,
-            "size_w": 9,
-            "size_h": 3
+            "position_left": 5.0,
+            "position_top": 9.0,
+            "size_w": 5,
+            "size_h": 2
+          },
+          {
+            "position_left": 4.0,
+            "position_top": 13.0,
+            "size_w": 6,
+            "size_h": 2
+          },
+          {
+            "position_left": 22.0,
+            "position_top": 9.0,
+            "size_w": 5,
+            "size_h": 2
+          },
+          {
+            "position_left": 22.0,
+            "position_top": 13.0,
+            "size_w": 6,
+            "size_h": 2
           }
         ]
       }
@@ -99,7 +99,7 @@
   {
     "id": 3,
     "period": "Qin and Han Dynasty",
-    "image_path": "static/images/博山炉2.jpg",
+    "image_path": "static/images/博山炉1.jpg",
     "motifs": [
       {
         "title": "Cloud",
@@ -107,16 +107,16 @@
         "motif_image_path": "static/images/祥云纹.png",
         "overlay": [
           {
-            "position_left": 30.5,
-            "position_top": 14.5,
+            "position_left": 13.5,
+            "position_top": 13.0,
             "size_w": 3,
-            "size_h": 2
+            "size_h": 1
           },
           {
-            "position_left": 27.0,
-            "position_top": 18.0,
-            "size_w": 12,
-            "size_h": 2
+            "position_left": 11.0,
+            "position_top": 15.0,
+            "size_w": 10,
+            "size_h": 3
           }
         ]
       },
@@ -126,28 +126,28 @@
         "motif_image_path": "static/images/山纹.png",
         "overlay": [
           {
-            "position_left": 30.0,
-            "position_top": 16.0,
-            "size_w": 3,
-            "size_h": 3
+            "position_left": 14.0,
+            "position_top": 11.0,
+            "size_w": 4,
+            "size_h": 2
           },
           {
-            "position_left": 28.0,
-            "position_top": 14.5,
+            "position_left": 12.0,
+            "position_top": 13.0,
+            "size_w": 1,
+            "size_h": 2
+          },
+          {
+            "position_left": 14.0,
+            "position_top": 14.0,
             "size_w": 2,
-            "size_h": 3
+            "size_h": 2
           },
           {
-            "position_left": 34.0,
-            "position_top": 14.5,
+            "position_left": 17.0,
+            "position_top": 13.0,
             "size_w": 2,
-            "size_h": 3
-          },
-          {
-            "position_left": 30.0,
-            "position_top": 11.5,
-            "size_w": 5,
-            "size_h": 3
+            "size_h": 2
           }
         ]
       }
