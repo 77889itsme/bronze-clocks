@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/learn_color_patination.js') }}"></script>
+
+<div class="row container">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <br><h2 class="title">Phase 3: Patination</h2> <br>
+        <div class="main-text">
+            The patinas on ancient bronzes are complex, multi-layered corrosion products, which range in 
+            color from green and blue to red and black. The formation of these patinas is influenced by 
+            the alloy composition, burial environment, and the passage of time.
+    </div>
+</div>
+
+<div class="row container mt-3">
+    <div class="col-md-7"></div>
+    <div class="col-md-5" style="display: flex;">
+        <img class="click-icon" src="{{ url_for('static', filename = 'assests/icons/click_accent.png') }}" alt="click icon">
+        <p class="hint-text">Click on color spheres to see changes!</p>
+    </div>
+</div>
+
+<div class="row container">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <div class="container main-text">
+            <h3 class="subtitle">Copper (Cu)</h3>
+            <strong>Patina Colors:</strong> Green, Blue <br>
+            <strong>Oxide:</strong> Cu₂O (Copper(I) oxide) → CuO (Copper(II) oxide) <br>
+            <strong>Carbonate:</strong> Cu₂(OH)₂CO₃ (Copper carbonate hydroxide)
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="sphere" id="copper" style="background-color: #B87333;" onclick="changeColor('copper')"></div>
+    </div>
+    <div class="col-md-2 mx-2">
+        <div id="copper-text" class="subtitle">Cu</div>
+        <div id="copper-text-detail" class="main-text">Copper (Initial Stage)</div>
+    </div>
+</div>
+
+<div class="row container mt-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <div class="container main-text">
+            <h3 class="subtitle">Tin (Sn)</h3>
+            <strong>Patina Colors:</strong> White <br>
+            <strong>Oxide:</strong> SnO₂ (Tin dioxide) <br>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="sphere" id="tin" style="background-color: #C0C0C0;" onclick="changeColor('tin')"></div>
+    </div>
+    <div class="col-md-2 mx-2">
+        <div id="tin-text" class="text sphere-text">Sn</div>
+        <div id="tin-text-detail" class="main-text">Tin (Initial Stage)</div>
+    </div>
+</div>
+
+<div class="row container mt-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <div class="container main-text">
+            <h3 class="subtitle">Lead (Pb)</h3>
+            <strong>Patina Colors:</strong> Light Gray to White <br>
+            <strong>Oxide & Carbonate:</strong> PbO (Lead oxide) → PbCO₃ (Lead carbonate) <br>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="sphere" id="lead" style="background-color: #A9A9A9;" onclick="changeColor('lead')"></div>
+    </div>
+    <div class="col-md-2 mx-2">
+        <div id="lead-text" class="text sphere-text">Pb</div>
+        <div id="lead-text-detail" class="main-text">Lead (Initial Stage)</div>
+    </div>
+</div>
+
+<div class="row container mt-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <div class="text-center">
+            <a href="/learn" class="btn btn-light">Choose Another Section</a>
+        </div>
+    </div>
+ </div>
+
+
+{% endblock %}

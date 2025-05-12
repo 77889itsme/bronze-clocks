@@ -1,0 +1,30 @@
+[
+    {
+      "id": 0,
+      "title": "Subtlety and Simplicity",
+      "subtitle": "Shang Dynatsty",
+      "content": "During the Shang Dynasty, there were no artificial decorative colors used in bronzeware. Bronze vessels displayed only the natural color of the bronze alloy, which ranged from yellowish-brown to grey-green depending on the copper, tin, and lead content.<br><br> Decoration relied on cast patterns and surface polish, with no use of inlays or pigments to add color.",
+      "image_path": "static/images/爵.jpg"
+    },
+    {
+      "id": 1,
+      "title": "Limited Use of Color",
+      "subtitle": "Western Zhou Dynasty",
+      "content": "In the Western Zhou Dynasty, there was very limited use of color. Bronze still showed its natural metallic tone. <br><br> In rare cases, traces of red pigment, specifically cinnabar, have been found, indicating the earliest experiments with painted decoration.<br><br> Most of the visual effect came from the contrast of raised and recessed areas after casting and from the natural patina, which appeared as green or blue corrosion.",
+      "image_path": "static/images/大克鼎.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Inlay and Painting",
+      "subtitle": "Eastern Zhou Dynasty",
+      "content": "The Eastern Zhou Dynasty saw significant development in decorative colors. The introduction and widespread use of inlay techniques became prominent, with gold, silver, and copper inlaid into carved grooves, creating strong color contrasts—gold/yellow, silver/white, and copper/red. <br><br> Additionally, mineral pigments such as cinnabar red, malachite green, and azurite blue were used to paint or highlight certain areas, making the bronzes much more colorful. <br><br> Some bronzes combined both inlay and painting techniques for multicolored effects.",
+      "image_path": "static/images/错金嵌松石樽.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Peak of Color Decoration",
+      "subtitle": "Qin and Han Dynasties",
+      "content": "The Qin and Han Dynasties marked the peak of colored decoration in Chinese bronzes. Advanced gilding techniques, such as mercury gilding, were used to cover surfaces with a layer of gold, resulting in a brilliant golden appearance.<br><br> The continued use of gold and silver inlays often formed complex patterns.<br><br>There was also systematic use of mineral pigments and lacquer for painted decoration, sometimes layered over gilded or inlaid surfaces to create rich, multi-layered color effects.",
+      "image_path": "static/images/瑞兽博局纹鎏金铜镜.png"
+    }
+  ]

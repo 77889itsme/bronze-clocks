@@ -226,5 +226,41 @@
     "end_time": -886,
     "image_path": "static/images/大克鼎.png",
     "url": "https://www.shanghaimuseum.net/resource/museum_files/show_files/20151104094055028/index.html"
+  },
+  {
+    "id": 19,
+    "name_chinese": "鸢鼎",
+    "name_pinyin": "Yuan Ding",
+    "name_en": "Ritual Cauldron (Ding) with Taotie Motif",
+    "findspot": "Unkown",
+    "museum": "Harvard Art Museums",
+    "start_time": -1400,
+    "end_time": -1100,
+    "image_path": "static/images/鸢鼎.png",
+    "url": "https://hvrd.art/o/204094"
+  },
+  {
+    "id": 20,
+    "name_chinese": "方彝",
+    "name_pinyin": "Fang Yi",
+    "name_en": "Ritual Wine Vessel (Fang Yi) with Taotie Motif",
+    "findspot": "Unkown",
+    "museum": "Harvard Art Museums",
+    "start_time": -1200,
+    "end_time": -1100,
+    "image_path": "static/images/饕餮纹方彝.png",
+    "url": "https://hvrd.art/o/203988"
+  },
+  {
+    "id": 21,
+    "name_chinese": "错金嵌松石樽",
+    "name_pinyin": "Cuo Jin Qian Song Shi Zun",
+    "name_en": "Wine Vessel (Zun) with Gold-inlaid Turquoise ",
+    "findspot": "Unkown",
+    "museum": "The Palace Museum",
+    "start_time": -330,
+    "end_time": -221,
+    "image_path": "static/images/错金嵌松石樽.png",
+    "url": "https://www.dpm.org.cn/collection/bronze/229985.html"
   }
 ]

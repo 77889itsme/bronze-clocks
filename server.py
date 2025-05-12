@@ -8,12 +8,14 @@ import urllib.parse
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE_QUIZ = os.path.join(BASE_DIR, "data/quiz.json")
+DATA_FILE_COLOR = os.path.join(BASE_DIR, "data/color.json")
 DATA_FILE_SHAPE = os.path.join(BASE_DIR, "data/shape.json")
 DATA_FILE_MOTIF = os.path.join(BASE_DIR, "data/motif.json")
 
 quiz_data = load_data(DATA_FILE_QUIZ)
 quiz_len = len(quiz_data)
 
+color_data = load_data(DATA_FILE_COLOR)
 shape_data = load_data(DATA_FILE_SHAPE)
 motif_data = load_data(DATA_FILE_MOTIF)
 
@@ -35,6 +37,20 @@ def learn_color_section_page():
 @app.route('/learn/color/casting')
 def learn_color_casting():
    return render_template('learn_color_casting.html')
+
+@app.route('/learn/color/decoration')
+def learn_color_decoration_start():
+   return redirect(url_for('learn_color_decoration', page_num=1))
+
+@app.route('/learn/color/decoration/<int:page_num>')
+def learn_color_decoration(page_num):
+   id = page_num - 1
+   info = color_data[id]
+   return render_template('learn_color_decoration_pages.html', page_num=page_num, info=info)
+
+@app.route('/learn/color/patination')
+def learn_color_patination():
+   return render_template('learn_color_patination.html')
 
 @app.route('/learn/motif')
 def learn_motif_section_page():
@@ -64,19 +80,19 @@ def quiz_start():
 
 @app.route('/quiz/<int:page_num>')
 def quiz_page(page_num):
-    encoded_ids = request.args.get('ids')
-    if not encoded_ids:
-        return "Missing quiz ID list", 400
-    try:
-        import json, urllib.parse
-        ids = json.loads(urllib.parse.unquote(encoded_ids))
-    except Exception:
-        return "Invalid ID format", 400
-    if page_num < 1 or page_num > len(ids):
-        return "Invalid quiz page", 404
-    quiz_id = ids[page_num - 1]
-    info = quiz_data[quiz_id]
-    return render_template('quiz.html', info=info, encoded_ids=encoded_ids, page_num=page_num)
+   encoded_ids = request.args.get('ids')
+   if not encoded_ids:
+      return "Missing quiz ID list", 400
+   try:
+      import json, urllib.parse
+      ids = json.loads(urllib.parse.unquote(encoded_ids))
+   except Exception:
+      return "Invalid ID format", 400
+   if page_num < 1 or page_num > len(ids):
+      return "Invalid quiz page", 404
+   quiz_id = ids[page_num - 1]
+   info = quiz_data[quiz_id]
+   return render_template('quiz.html', info=info, encoded_ids=encoded_ids, page_num=page_num)
 
 # AJAX FUNCTIONS
 
