@@ -32,6 +32,10 @@ def learning_section_page():
 def learn_color_section_page():
    return render_template('learn_color.html')
 
+@app.route('/learn/color/casting')
+def learn_color_casting():
+   return render_template('learn_color_casting.html')
+
 @app.route('/learn/motif')
 def learn_motif_section_page():
    return render_template('learn_motif.html')

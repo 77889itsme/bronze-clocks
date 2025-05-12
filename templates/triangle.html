@@ -1,0 +1,35 @@
+<svg id="triangle-grid" width="500" height="502" viewBox="0 0 500 500" style="transform: rotate(180deg);"></svg>
+
+<script>
+const svg = document.getElementById("triangle-grid");
+const side = 50
+const height = Math.sqrt(3) / 2 * side;
+const rows = 10;
+
+const border = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+border.setAttribute("points", `0,0 ${rows*side/2},${rows*height} ${rows*side},0`);
+border.setAttribute("stroke", "black");
+border.setAttribute("stroke-width", "2");
+border.setAttribute("fill", "none");
+svg.appendChild(border);
+
+for (let row = 0; row < rows; row++) {
+  for (let col = 1; col < rows - row; col++) {
+    const xOffset = (col + row * 0.5) * side;
+    const yOffset = row * height;
+
+    const points = [
+      [xOffset, yOffset],
+      [xOffset + side / 2, yOffset + height],
+      [xOffset - side / 2, yOffset + height]
+    ].map(p => p.join(",")).join(" ");
+
+    const triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    triangle.setAttribute("points", points);
+    triangle.setAttribute("stroke", "#ccc");
+    triangle.setAttribute("fill", "none");
+    svg.appendChild(triangle);
+  }
+}
+
+</script>

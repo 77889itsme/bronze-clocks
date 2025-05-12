@@ -21,12 +21,6 @@ html {
     grid-template-rows: auto 1fr auto;
 }
   
-.page-footer {
-    background-color: rgb(75 70 74);
-    color: #fff;
-    padding: 20px;
-}
-  
 
 a {
     color: var(--accent-color);
@@ -58,7 +52,7 @@ a {
     margin-top: 20px;
 }
 
-.main-text p {
+.main-text {
     font-family: "Noto Sans", sans-serif;
     font-size: 1rem;
     line-height: 1.8;
@@ -92,10 +86,12 @@ a {
 
 .btn-primary {
     background-color: var(--accent-color); 
+    border-color: var(--accent-color);
 }
   
 .btn-primary:hover {
     background-color: #7fa09b;
+    border-color: #7fa09b;
 }
 
 .footer {
