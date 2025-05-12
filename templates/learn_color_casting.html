@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/learn_color_casting.js') }}"></script>
 
 <div class="row container">
     <div class="col-md-1"></div>
@@ -21,15 +22,37 @@
                 <strong class="subtitle">Lead (Pb)</strong> can introduce a duller, grayish tint, while also aiding in the casting process. <br>
             </div>
             
-            <br><br>Click to find the correct composition ratio for each dynasty! <br><br>
-
-            <div class="text-center">
-                <a href="/learn/color/decoration" class="btn btn-primary">  Forge  </a>
+            <div class="text-center mt-5">
+                <a href="/learn/color/decoration" class="btn btn-primary px-5">  Forge  </a>
             </div>
         </div>
     </div>
     <div class="col-md-5 mt-5">
         {% include "triangle.html" %}
+        <div class="casting-overlay">
+            <img src="{{ url_for('static', filename='assests/metal/Copper-black.png') }}" alt="copper icon" class="metal-icon" style="margin-top: 20px;margin-left: 205px;">
+            <img src="{{ url_for('static', filename='assests/metal/tin.png') }}" alt="copper icon" class="metal-icon" style="margin-top: 450px;margin-left: 455px;">
+            <img src="{{ url_for('static', filename='assests/metal/lead2.png') }}" alt="copper icon" class="metal-icon" style="margin-top: 450px;margin-left: -40px;">
+            <svg viewBox="0 0 500 502" style="position: relative; z-index: 1;">
+                <ellipse class="hover-reddish-yellow" cx="280" cy="170" rx="20" ry="50" fill="rgba(255, 0, 0, 0.2)" transform="rotate(150 280 170)" />
+                <ellipse class="hover-light-yellow" cx="310" cy="280" rx="50" ry="50" fill="rgba(255, 255, 0, 0.2)" />
+                <ellipse class="hover-silver-grey" cx="270" cy="420" rx="150" ry="50" fill="rgba(169, 169, 169, 0.2)" />
+                <text id="text-reddish-yellow" class="main-text" x="280" y="170" text-anchor="middle" alignment-baseline="middle" fill="black" style="display:none;">
+                    Shang and Zhou Dynasties
+                </text>
+                <text id="text-light-yellow" x="310" y="280" class="main-text" text-anchor="middle" alignment-baseline="middle" fill="black" style="display:none;">
+                    Zhou Dynasty
+                </text>
+                <text id="text-silver-grey" x="270" y="420" class="main-text" text-anchor="middle" alignment-baseline="middle" fill="black" style="display:none;">
+                    Qin and Han Dynasties
+                </text>
+            </svg>
+
+            <div class="mt-5 ms-5" style="display: flex;">
+                <img class="click-icon" src="{{ url_for('static', filename = 'assests/icons/click_accent.png') }}" alt="click icon">
+                <p class="hint-text">Click to find the correct composition ratio for each dynasty!</p>
+            </div>
+        </div>
     </div>
     <div class="col-md-1"></div>
 

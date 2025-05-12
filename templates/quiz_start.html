@@ -2,32 +2,40 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="{{url_for('static', filename='css/quiz.css')}}">
 <script>
     let encoded_ids = {{encoded_ids}}
 </script>
 
-<div class="container">
-    <br><h2 class="title">Welcome to quiz!</h2> <br><br>
+<div class="container" style="max-width: 700px;">
+  <br><h2 class="title">Welcome to Quiz!</h2> <br><br>
 
-    <div class="row main-text">
-        <div class="col-md-6 text-center">
-          <a href="/quiz/prep/1" class="learning-link">
-            <div class="learning-card">
-              <img src="{{ url_for('static', filename='images/父丁爵_color.jpg') }}" alt="Color learning module" class="card-image" />
-            </div>
-            <h3 class="card-title">Start by multiple choices</h3>
-          </a>
-        </div>
-      
-        <div class="col-md-6 text-center">
-          <a href="{{ url_for('quiz_page', page_num=1, ids=encoded_ids) }}" class="learning-link">
-            <div class="learning-card">
-              <img src="{{ url_for('static', filename='images/司母戊鼎_motif.jpg') }}" alt="Motif learning module" class="card-image" />
-            </div>
-            <h3 class="card-title">Start the guesses</h3>
-          </a>
-        </div>
-    </div>
+  <p class="main-text">
+    Now that you've completed the prep quiz, you can either review the multiple-choice questions again to 
+    reinforce your understanding, or dive straight into the main quiz! <br><br>
+    In the main quiz, you will make  guesses about the time period and purpose of real exhibits that we 
+    have carefully selected for you.
+  </p>
+
+  <div class="row main-text mt-5">
+      <div class="col-md-6 text-center">
+        <a href="/quiz/prep/1" class="quiz-link">
+          <div class="quiz-card">
+            <img src="{{ url_for('static', filename='images/父丁爵_color.jpg') }}" alt="Color learning module" class="quiz-card-image" />
+          </div>
+          <h3 class="subtitle quiz-title grey">Review Multiple-Choice Questions</h3>
+        </a>
+      </div>
+    
+      <div class="col-md-6 text-center">
+        <a href="{{ url_for('quiz_page', page_num=1, ids=encoded_ids) }}" class="quiz-link">
+          <div class="quiz-card">
+            <img src="{{ url_for('static', filename='images/青铜觶.jpeg') }}" alt="Motif learning module" class="quiz-card-image" />
+          </div>
+          <h3 class="subtitle quiz-title">Start the Main Quiz <br> Guess the Artifact</h3>
+        </a>
+      </div>
+  </div>
       
 </div>
 

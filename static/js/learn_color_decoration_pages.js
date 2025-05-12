@@ -25,7 +25,7 @@ function updateButtons(){
     `);
 
     if (currentPage === 4) {
-        buryBtn = `<a href="/learn/color/patination" class="btn btn-primary">Bury</a>`;
+        buryBtn = `<a href="/learn/color/patination" class="btn btn-primary px-5">Bury</a>`;
 
         $('#final-page').html(`
             <div>${buryBtn}</div>

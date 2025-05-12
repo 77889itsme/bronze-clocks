@@ -11,31 +11,27 @@
   let encodedIds = "{{ encoded_ids }}";
 </script>
 
-<br>
-
 <div class="container">
   <div class="row">
     <div class="col-md-6">
       <img id="quiz-image" alt="image here">
     </div>
 
-    <div class="col-md-6 text-container">
-      <h2>Which Dynasty?</h2> <br><br>
+    <div class="col-md-6 mt-5 main-text">
+      <h2 class="title">Which Dynasty?</h2>
 
-      <div class="container">
-        <span id="name-en">Descriptive English Name</span>
+      <div class="container subtitle mt-5">
+        <strong><span id="name-en">Descriptive English Name</span></strong>
       </div>
-      <div class="container">
+      <div class="container subtitle">
         <span id="name-cn" class="bold">中文名</span>
         <span id="name-pinyin">Pin Yin</span>
       </div>
 
-      <br><br>
-      <div class="container">
+      <div class="container mt-5">
         <span id="findspot">findspot</span> <br>
         <span id="museum">museum</span>
       </div>
-
     </div>
   </div>
 </div>
@@ -44,25 +40,50 @@
 {% include "timeline.html" %}
 
 <div class="timeline-slider-wrapper" id="slider">
-  <input type="range"class="form-range" id="timelineSlider" min="-1600" max="220" step="1" value="-1600">
+  <input type="range" class="form-range" id="timelineSlider" min="-1600" max="220" step="1" value="-1600">
   <div class="slider-marker" id="sliderMarker"></div>
 </div>
-
-<svg id="answer-box" width="1325" height="40"></svg>
-
 
 <div class="center-button">
   <button class="btn btn-primary" id="confirmYear">Confirm Year</button>
 </div>
-  
-<div id="sliderResult"></div> 
-<div id="scoreResult"></div>
-<span id="correctTime"></span>
-<span id="detailURL"></span>
+
+<div class="main-feedback-graphic">
+  <svg id="answer-box"></svg>
+</div>
+
+
+<div class="container main-feedback main-text" style="display:none;">
+  <div class="result-section">
+    <h3 class="title">Your Score:<span class="ms-3" id="scoreResult">##</span> </h3>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <h3 class="subtitle bold">Slider Result</h3>
+      <span id="sliderResult">####</span>
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="subtitle bold">Correct Time Period</h3>
+      <span id="correctTime">#### - ####</span>
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="subtitle bold">Details</h3>
+      <span id="detailURL"><a href="#">View Details</a></span>
+    </div>
+  </div>
+</div>
+
+
 
 <br><br>
 
-<div id="nextPageButton"></div> 
+<div class="center-button">
+  <div id="nextPageButton"></div> 
+</div>
+
 
 
 {% endblock %}

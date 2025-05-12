@@ -30,29 +30,44 @@ function updateExihibit(){
 function updateMarkerPosition(val) {
     const $slider = $('#timelineSlider');
     const sliderWidth = $slider.width();
+    console.log(sliderWidth)
     const percent = (val - (-1600)) / (220 - (-1600));
     const left = percent * sliderWidth;
     $('#sliderMarker').css('left', left + 'px');
 }
 
-function updateAnswerBox(startTime, endTime) {
-    let xStart = 60 + (startTime + 1600) * 0.65934;
-    let xEnd = 60 + (endTime + 1600) * 0.65934;
+function updateGraphic(startTime, endTime) {
+    const minTime = -1600;  // The minimum time value (left side of the scale)
+    const maxTime = 220;    // The maximum time value (right side of the scale)
+
+    // Scale the time to fit within the SVG width
+    const svgWidth = 1140;  // Width of the SVG container
+    const scale = svgWidth / (maxTime - minTime);  // Scale factor to convert time units to pixels
+
+    // Calculate the starting X position of the rectangle based on startTime
+    let xStart = (startTime - minTime) * scale;
+    // Calculate the ending X position of the rectangle based on endTime
+    let xEnd = (endTime - minTime) * scale;
+
+    // Calculate the width of the rectangle
     let width = xEnd - xStart;
 
+    // Remove any previous rectangles
     $('#answer-rect').remove();
 
+    // Create the new rectangle
     let $rect = $(document.createElementNS("http://www.w3.org/2000/svg", "rect"))
         .attr({
             id: "answer-rect",
             x: xStart,
-            y: -120,
+            y: 0,  // Vertical position (set to 0 since it's 20px high)
             width: width,
-            height: 20,
-            rx: 10,
-            fill: "rgba(255, 165, 0, 0.4)",
+            height: 25,
+            rx: 10, // Rounded corners (radius)
+            fill: "rgba(255, 165, 0)", // Color with transparency
         });
 
+    // Append the rectangle to the SVG
     $('#answer-box').append($rect);
 }
 
@@ -68,9 +83,9 @@ function updateFeedback(startTime, endTime){
     let selectedYear = parseInt($('#timelineSlider').val());
     correctYear = (startTime + endTime) / 2
     let score = calculateScore(selectedYear, correctYear);
-    $('#sliderResult').html("Your Guess: " + selectedYear);
-    $('#scoreResult').html(`<p>Your score: <strong>${score}</strong></p>`);
-    $('#correctTime').html(`<p>Correct Time: ${startTime} – ${endTime}</p>`);
+    $('#sliderResult').html(selectedYear);
+    $('#scoreResult').html(score);
+    $('#correctTime').html(`${startTime} – ${endTime}`);
 
     if (currentPage < 5) {
         const nextUrl = `/quiz/${currentPage + 1}?ids=${encodedIds}`;
@@ -82,11 +97,12 @@ function updateFeedback(startTime, endTime){
 
 
 function updateAnswer(){
+    $(".main-feedback").show()
     let startTime = info.start_time;
     let endTime = info.end_time;
 
-    $('#slider').hide(); 
-    updateAnswerBox(startTime, endTime);
+    $('#timelineSlider').hide(); 
+    updateGraphic(startTime, endTime);
     updateFeedback(startTime, endTime);
 
     let url = info.url;

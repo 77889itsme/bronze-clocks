@@ -4,6 +4,8 @@ from utils import load_data, select_ids
 import os
 import json
 import urllib.parse
+from datetime import timedelta
+
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,11 +21,19 @@ quiz_len = len(quiz_data)
 color_data = load_data(DATA_FILE_COLOR)
 shape_data = load_data(DATA_FILE_SHAPE)
 motif_data = load_data(DATA_FILE_MOTIF)
+prep_data = load_data(DATA_FILE_PREP)
 
 app = Flask(__name__)
 import os
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
-print(os.getenv('FLASK_SECRET_KEY'))
+
+# initial settings
+app.permanent_session_lifetime = timedelta(days=5)
+@app.before_request
+def reset_first_visit():
+    # Set the 'first_visit' flag only if it is not already in the session
+    if 'first_visit' not in session:
+        session['first_visit'] = True
 
 # ROUTES
 @app.route('/')
@@ -80,18 +90,23 @@ def learn_shape_pages(page_num):
 def quiz_start():
     # Check if it's the user's first visit
     if session.get('first_visit', True):
-        session['first_visit'] = False
-        return render_template('quiz_init.html')
+      session['first_visit'] = False
+      return render_template('quiz_init.html')
     else:
-        ids = select_ids(quiz_len, 5)
-        encoded_ids = urllib.parse.quote(json.dumps(ids))
-        return render_template('quiz_start.html', encoded_ids=encoded_ids)
+      # generate encoded ids for main quiz
+      ids = select_ids(quiz_len, 5)
+      encoded_ids = urllib.parse.quote(json.dumps(ids))
+      return render_template('quiz_start.html', encoded_ids=encoded_ids)
 
 @app.route('/quiz/prep/<int:page_num>')
-def quiz_prep():
+def quiz_prep(page_num):
+   sections = ['color', 'motif', 'shape']
+   section_name = sections[page_num - 1]
+   questions = prep_data[section_name]
+   # generate encoded ids for main quiz
    ids = select_ids(quiz_len, 5)
    encoded_ids = urllib.parse.quote(json.dumps(ids))
-   return render_template('quiz_prep.html', page_num=1, encoded_ids=encoded_ids)
+   return render_template('quiz_prep.html', section_name=section_name, questions=questions, page_num=page_num, encoded_ids=encoded_ids)
 
 @app.route('/quiz/<int:page_num>')
 def quiz_page(page_num):

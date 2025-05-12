@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<title>Quiz Prep - {{ section_name | capitalize }}</title>
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/quiz_prep.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/quiz.css')}}">
+<script>
+    let info = {{questions|tojson}}
+    let currentPage = {{ page_num|int }};
+    let encodedIds = "{{ encoded_ids }}";
+</script>
+
+
+<body>
+    <div class="main-text mt-3 mx-auto" style="max-width: 700px;">
+        <h2 class="title">{{ section_name | capitalize }} Quiz</h2>
+        
+        <div id="question-section" class="mt-5">
+            <p id="question-text" class="subtitle"></p>
+            <div class="row options-container">
+                <div class="col-md-4">
+                    <div id="option-a" class="options-card"></div>
+                </div>
+                <div class="col-md-4">
+                    <div id="option-b" class="options-card"></div>
+                </div>
+                <div class="col-md-4">
+                    <div id="option-c" class="options-card"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" id="feedback"></div>
+
+        <div class="pagination">
+            <a href="" id="next-page" class="btn btn-primary px-5" data-next-url="{{ url_for('quiz_page', page_num=1, ids=encodedIds) }}">Next</a>
+        </div>
+    </div>
+    <br><br>
+</body>
+
+{% endblock %}
