@@ -1,0 +1,114 @@
+{
+    "color": [
+      {
+        "question": "Which dynasty showed no use of artificial decorative colors in bronzeware?",
+        "options": [
+          {"A": "Shang Dynasty", "B": "Western Zhou Dynasty", "C": "Qin and Han Dynasties"}
+        ],
+        "answer": "A"
+      },
+      {
+        "question": "In which dynasty were traces of cinnabar pigment found, indicating early experiments with painted decoration?",
+        "options": [
+          {"A": "Shang Dynasty", "B": "Western Zhou Dynasty", "C": "Eastern Zhou Dynasty"}
+        ],
+        "answer": "B"
+      },
+      {
+        "question": "Which of the following mineral pigments were used in the Eastern Zhou Dynasty?",
+        "options": [
+          {"A": "Malachite green", "B": "Red ochre", "C": "Indigo blue"}
+        ],
+        "answer": "A"
+      },
+      {
+        "question": "Which gilding technique was used in the Qin and Han Dynasties for colored decoration?",
+        "options": [
+          {"A": "Mercury gilding", "B": "Gold leaf application", "C": "Lacquer-based painting"}
+        ],
+        "answer": "A"
+      },
+      {
+        "question": "Which of the following colors was NOT used in the Qin and Han Dynasties for bronzeware decoration?",
+        "options": [
+          {"A": "Red", "B": "Blue", "C": "Black"}
+        ],
+        "answer": "C"
+      }
+    ],
+    "motif": [
+      {
+        "question": "Which motif symbolizes spiritual power and protection during rituals in the Shang Dynasty?",
+        "options": [
+          {"A": "Kuilong Motif", "B": "Taotie Motif", "C": "Panchi Motif"}
+        ],
+        "answer": "B"
+      },
+      {
+        "question": "What is the Panchi motif known for in the Eastern Zhou Dynasty?",
+        "options": [
+          {"A": "A long-bodied dragon", "B": "Curly dragons arranged in continuous patterns", "C": "Inscriptions recording events"}
+        ],
+        "answer": "B"
+      },
+      {
+        "question": "Which motif became central to decorative features in bronzeware during the Western Zhou Dynasty?",
+        "options": [
+          {"A": "Kuilong Motif", "B": "Inscriptions", "C": "Mountain Motif"}
+        ],
+        "answer": "B"
+      },
+      {
+        "question": "Which motif is formalized into swirling scrolls in the Han Dynasty?",
+        "options": [
+          {"A": "Mountain Motif", "B": "Cloud Motif", "C": "Taotie Motif"}
+        ],
+        "answer": "B"
+      },
+      {
+        "question": "What kind of motifs were popular for incense burners during the Han Dynasty?",
+        "options": [
+          {"A": "Cloud and Mountain motifs", "B": "Dragon and Tiger motifs", "C": "Panchi and Kuilong motifs"}
+        ],
+        "answer": "A"
+      }
+    ],
+    "shape": [
+      {
+        "question": "Which vessel is characterized by flared, pointed, triangular legs and is used for serving warm wine during rituals?",
+        "options": [
+          {"A": "Jue", "B": "Ding", "C": "Sword"}
+        ],
+        "answer": "A"
+      },
+      {
+        "question": "What is the primary function of the Ding vessel?",
+        "options": [
+          {"A": "Offering sacrifices and cooking", "B": "Serving wine", "C": "Displaying power"}
+        ],
+        "answer": "A"
+      },
+      {
+        "question": "Which type of vessel is associated with symbolic authority and hierarchy in the Western Zhou Dynasty?",
+        "options": [
+          {"A": "Sword", "B": "Jue", "C": "Ding"}
+        ],
+        "answer": "C"
+      },
+      {
+        "question": "What was a major feature of swords during the Zhou Dynasty?",
+        "options": [
+          {"A": "They were used for ceremonial purposes only", "B": "They were functional and artistic masterpieces", "C": "They were only symbolic, not functional"}
+        ],
+        "answer": "B"
+      },
+      {
+        "question": "Human-shaped bronze figures were especially prominent in which dynasties?",
+        "options": [
+          {"A": "Shang and Zhou Dynasties", "B": "Qin and Han Dynasties", "C": "Tang Dynasty"}
+        ],
+        "answer": "B"
+      }
+    ]
+}
+  

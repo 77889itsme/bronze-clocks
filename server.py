@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, session
 from utils import load_data, select_ids
 import os
 import json
@@ -11,6 +11,7 @@ DATA_FILE_QUIZ = os.path.join(BASE_DIR, "data/quiz.json")
 DATA_FILE_COLOR = os.path.join(BASE_DIR, "data/color.json")
 DATA_FILE_SHAPE = os.path.join(BASE_DIR, "data/shape.json")
 DATA_FILE_MOTIF = os.path.join(BASE_DIR, "data/motif.json")
+DATA_FILE_PREP = os.path.join(BASE_DIR, "data/quiz_prep.json")
 
 quiz_data = load_data(DATA_FILE_QUIZ)
 quiz_len = len(quiz_data)
@@ -20,6 +21,9 @@ shape_data = load_data(DATA_FILE_SHAPE)
 motif_data = load_data(DATA_FILE_MOTIF)
 
 app = Flask(__name__)
+import os
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
+print(os.getenv('FLASK_SECRET_KEY'))
 
 # ROUTES
 @app.route('/')
@@ -74,9 +78,20 @@ def learn_shape_pages(page_num):
 
 @app.route('/quiz')
 def quiz_start():
+    # Check if it's the user's first visit
+    if session.get('first_visit', True):
+        session['first_visit'] = False
+        return render_template('quiz_init.html')
+    else:
+        ids = select_ids(quiz_len, 5)
+        encoded_ids = urllib.parse.quote(json.dumps(ids))
+        return render_template('quiz_start.html', encoded_ids=encoded_ids)
+
+@app.route('/quiz/prep/<int:page_num>')
+def quiz_prep():
    ids = select_ids(quiz_len, 5)
    encoded_ids = urllib.parse.quote(json.dumps(ids))
-   return redirect(url_for('quiz_page', page_num=1, ids=encoded_ids))
+   return render_template('quiz_prep.html', page_num=1, encoded_ids=encoded_ids)
 
 @app.route('/quiz/<int:page_num>')
 def quiz_page(page_num):
