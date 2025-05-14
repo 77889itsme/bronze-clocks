@@ -1,11 +1,10 @@
 from flask import Flask
 from flask import render_template, redirect, url_for, request, session, jsonify
-from utils import load_data, select_ids
+from utils import load_data, select_ids, calculate_score
 import os
 import json
 import urllib.parse
 from datetime import timedelta
-
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -25,7 +24,7 @@ prep_data = load_data(DATA_FILE_PREP)
 
 app = Flask(__name__)
 import os
-app.secret_key = os.getenv('FLASK_SECRET_KEY')
+app.secret_key = "BRONZECLOCKAPPSECRETKEY"
 
 # initial settings
 app.permanent_session_lifetime = timedelta(days=5)
@@ -89,10 +88,10 @@ def learn_shape_pages(page_num):
 @app.route('/quiz')
 def quiz_start():
     # Check if it's the user's first visit
-    if session.get('first_visit', True):
+   if session.get('first_visit', True):
       session['first_visit'] = False
       return render_template('quiz_init.html')
-    else:
+   else:
       # generate encoded ids for main quiz
       ids = select_ids(quiz_len, 5)
       session['scores'] = []
@@ -131,8 +130,6 @@ def quiz_page(page_num):
 @app.route('/quiz/finish')
 def finish():
    scores = session.get('scores', [])
-   print(scores)
-   scores = [dict(t) for t in {frozenset(d.items()) for d in scores}]
    total_score = sum(item['score'] for item in scores)  # 计算总分
    rounds_data = [{
       "name": item["name"],
@@ -150,29 +147,50 @@ def finish():
 @app.route("/quiz/score/<int:page_num>", methods=['GET', 'POST'])
 def get_scores(page_num):   
    submitted_data = request.get_json()
-   score = submitted_data["score"]
-   correct_year = submitted_data["correct_year"]
+   selected_year = submitted_data["selected_year"]
+   start_time = submitted_data["start_time"]
+   end_time = submitted_data["end_time"]
+   correct_year = (start_time + end_time) /2
+
    ids = session.get("ids", [])
    quiz_id = int(ids[page_num - 1])
    info = quiz_data[quiz_id]
 
+   score, labels = calculate_score(selected_year, start_time, end_time)
+
    print("Before:", session.get("scores", []))
 
-   session['scores'].append({
-         'page_num': page_num,
-         'quiz_id': quiz_id,
-         'score': score,
-         'name': info.get("name_en", ""),
-         'image_path': info.get('image_path', ''),
-         'correct_year': correct_year,
-         'start_time': info.get('start_time', ''),
-         'end_time': info.get('end_time', ''),
-   })
+   # save data to session
+   scores = session.get("scores", [])
+   current_score = {
+        'page_num': page_num,
+        'quiz_id': quiz_id,
+        'score': score,
+        'labels': labels,
+        'name': info.get("name_en", ""),
+        'image_path': info.get('image_path', ''),
+        'correct_year': correct_year,
+        'start_time': info.get('start_time', ''),
+        'end_time': info.get('end_time', ''),
+   }
+   updated = False
+   for i, record in enumerate(scores):
+      if record['page_num'] == page_num:
+         scores[i] = current_score
+         updated = True
+         break
+   if not updated:
+      scores.append(current_score)
+
+   session['scores'] = scores
    session.modified = True
 
    print("After:", session.get("scores", []))
 
-   return jsonify({"message": "Score received", "info": session['scores']})
+   return jsonify({
+        "score": score,
+        "labels": labels
+    })
 
 
 if __name__ == '__main__':

@@ -37,12 +37,19 @@
   </div>
 </div>
 
+<div id="timeline-container">
+  {% include "timeline.html" %}
+</div>
 
-{% include "timeline.html" %}
 
 <div class="timeline-slider-wrapper" id="slider">
   <input type="range" class="form-range" id="timelineSlider" min="-1600" max="220" step="1" value="-1600">
   <div class="slider-marker" id="sliderMarker"></div>
+</div>
+
+<div id="timeline-slider-hint">
+  <img class="click-icon" src="{{ url_for('static', filename = 'assests/icons/click_accent.png') }}" alt="click icon">
+  <p class="hint-text">Slide the button to make a guess</p>
 </div>
 
 <div class="center-button">

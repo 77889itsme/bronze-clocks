@@ -40,11 +40,12 @@ function updateGraphic(startTime, endTime) {
     const maxTime = 220;    // The maximum time value (right side of the scale)
 
     // Scale the time to fit within the SVG width
-    const svgWidth = 1000;  // Width of the SVG container
+    const svgWidth = 1140;  // Width of the SVG container
     const scale = svgWidth / (maxTime - minTime);  // Scale factor to convert time units to pixels
 
     // Calculate the starting X position of the rectangle based on startTime
     let xStart = (startTime - minTime) * scale;
+    console.log(xStart)
     // Calculate the ending X position of the rectangle based on endTime
     let xEnd = (endTime - minTime) * scale;
 
@@ -70,39 +71,11 @@ function updateGraphic(startTime, endTime) {
     $('#answer-box').append($rect);
 }
 
-function calculateScore(selectedYear, correctYear) {
-    let diff = Math.abs(selectedYear - correctYear);
-    if (diff <= 200) return 100;
-    else if (diff <= 400) return 80;
-    else if (diff <= 600) return 60;
-    else return 40;
-}
-
-function updateFeedback(startTime, endTime){
-    let selectedYear = parseInt($('#timelineSlider').val());
-    correctYear = (startTime + endTime) / 2
-    let score = calculateScore(selectedYear, correctYear);
-    postScore(currentPage, score, correctYear);
-
-    $('#sliderResult').html(selectedYear);
-    $('#scoreResult').html(score);
-    $('#correctTime').html(`${startTime} – ${endTime}`);
-
-    if (currentPage < 5) {
-        const nextUrl = `/quiz/${currentPage + 1}?ids=${encodedIds}`;
-        $('#nextPageButton').html(`<a href="${nextUrl}" class="btn btn-success mt-3">Next Question</a>`);
-    } else {
-        let nextUrl = "/quiz/finish"
-        $('#nextPageButton').html(`<a href="${nextUrl}" class="btn btn-success mt-3">See your Scores</a>`)
-        $('#nextPageButton').append(`<p class="mt-3">You’ve reached the last question.</p>`);
-    }
-}
-
-function postScore(currentPage, score, correctYear) {    
+function getScore(currentPage, selectedYear, startTime, endTime) {
     data_to_submit = JSON.stringify({
-        "score": score,
-        "ids": ids,
-        "correct_year": correctYear
+        "selected_year": selectedYear,
+        "start_time": startTime,
+        "end_time": endTime,
     })
     $.ajax({
         type: 'POST',
@@ -111,8 +84,9 @@ function postScore(currentPage, score, correctYear) {
         credentials: 'include',
         data: data_to_submit,
         success: function(response) {
-            console.log("Score posted successfully.")
+            console.log("Selected year posted successfully.")
             console.log(response)
+            $('#scoreResult').html(response.score);
         },
         error: function(error) {
             console.error('Error:', error);
@@ -120,6 +94,22 @@ function postScore(currentPage, score, correctYear) {
     })
 }
 
+function updateFeedback(startTime, endTime){
+    let selectedYear = parseInt($('#timelineSlider').val());
+    getScore(currentPage, selectedYear, startTime, endTime);
+
+    $('#sliderResult').html(selectedYear);
+    $('#correctTime').html(`${startTime} – ${endTime}`);
+
+    if (currentPage < 5) {
+        const nextUrl = `/quiz/${currentPage + 1}?ids=${encodedIds}`;
+        $('#nextPageButton').html(`<a href="${nextUrl}" class="btn btn-primary mt-3">Next Question</a>`);
+    } else {
+        let nextUrl = "/quiz/finish"
+        $('#nextPageButton').html(`<a href="${nextUrl}" class="btn btn-primary mt-3">See your Scores</a>`)
+        $('#nextPageButton').append(`<p class="mt-3">You’ve reached the last question.</p>`);
+    }
+}
 
 function updateAnswer(){
     $(".main-feedback").show()
@@ -146,6 +136,11 @@ $(document).ready(function () {
   
     $('#confirmYear').click(function () {
         $("#confirmYear").hide()
+        $("#timeline-slider-hint").hide()
         updateAnswer();
+        const target = document.querySelector(".result-section");
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });  

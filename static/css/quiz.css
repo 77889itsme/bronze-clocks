@@ -2,7 +2,7 @@
     position: relative;
     width: 88%;
     max-width: 1325px;
-    margin: -161px auto 150px;
+    margin: -166px auto 150px;
     height: 10px;
 }
   
@@ -154,7 +154,7 @@
 
 .main-feedback-graphic {
     position: relative;
-    margin: -150px 0px 0px 75px;
+    margin: -143px 0px 0px 75px;
     width: 1140px;
     height: 30px;
 }
@@ -174,7 +174,10 @@
 }
 
 #images-container {
-    height: 10rem;
+    max-height: 8rem;
+    height: auto;
+    width: auto;
+    object-fit: contain;
 }
 
 .timeline-dot {
@@ -191,4 +194,13 @@
     width: 2px;
     background-color: #ccc;
     z-index: 4;
+}
+
+#timeline-container {
+    margin-top: -50px;
+}
+
+#timeline-slider-hint {
+    display: flex; 
+    justify-content: center;
 }
