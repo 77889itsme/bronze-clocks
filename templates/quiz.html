@@ -8,7 +8,8 @@
 <script>
   let info = {{info|tojson}}
   let currentPage = {{ page_num|int }};
-  let encodedIds = "{{ encoded_ids }}";
+  let encodedIds = `{{ encoded_ids }}`;
+  let ids = {{ids|tojson}}
 </script>
 
 <div class="container">

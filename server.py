@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, redirect, url_for, request, session
+from flask import render_template, redirect, url_for, request, session, jsonify
 from utils import load_data, select_ids
 import os
 import json
@@ -95,6 +95,8 @@ def quiz_start():
     else:
       # generate encoded ids for main quiz
       ids = select_ids(quiz_len, 5)
+      session['scores'] = []
+      session['ids'] = ids
       encoded_ids = urllib.parse.quote(json.dumps(ids))
       return render_template('quiz_start.html', encoded_ids=encoded_ids)
 
@@ -105,6 +107,8 @@ def quiz_prep(page_num):
    questions = prep_data[section_name]
    # generate encoded ids for main quiz
    ids = select_ids(quiz_len, 5)
+   session['scores'] = []
+   session['ids'] = ids
    encoded_ids = urllib.parse.quote(json.dumps(ids))
    return render_template('quiz_prep.html', section_name=section_name, questions=questions, page_num=page_num, encoded_ids=encoded_ids)
 
@@ -122,9 +126,53 @@ def quiz_page(page_num):
       return "Invalid quiz page", 404
    quiz_id = ids[page_num - 1]
    info = quiz_data[quiz_id]
-   return render_template('quiz.html', info=info, encoded_ids=encoded_ids, page_num=page_num)
+   return render_template('quiz.html', info=info, ids=ids, encoded_ids=encoded_ids, page_num=page_num)
+
+@app.route('/quiz/finish')
+def finish():
+   scores = session.get('scores', [])
+   print(scores)
+   scores = [dict(t) for t in {frozenset(d.items()) for d in scores}]
+   total_score = sum(item['score'] for item in scores)  # 计算总分
+   rounds_data = [{
+      "name": item["name"],
+      'page_num': item['page_num'],
+      'score': item['score'],
+      'image_path': item['image_path'],
+      'correct_year': item['correct_year'],
+      'start_time': item['start_time'],
+      'end_time': item['end_time'],
+   } for item in scores]
+
+   return render_template('finish.html', total_score=total_score, rounds_data=rounds_data)
 
 # AJAX FUNCTIONS
+@app.route("/quiz/score/<int:page_num>", methods=['GET', 'POST'])
+def get_scores(page_num):   
+   submitted_data = request.get_json()
+   score = submitted_data["score"]
+   correct_year = submitted_data["correct_year"]
+   ids = session.get("ids", [])
+   quiz_id = int(ids[page_num - 1])
+   info = quiz_data[quiz_id]
+
+   print("Before:", session.get("scores", []))
+
+   session['scores'].append({
+         'page_num': page_num,
+         'quiz_id': quiz_id,
+         'score': score,
+         'name': info.get("name_en", ""),
+         'image_path': info.get('image_path', ''),
+         'correct_year': correct_year,
+         'start_time': info.get('start_time', ''),
+         'end_time': info.get('end_time', ''),
+   })
+   session.modified = True
+
+   print("After:", session.get("scores", []))
+
+   return jsonify({"message": "Score received", "info": session['scores']})
 
 
 if __name__ == '__main__':

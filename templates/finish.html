@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/finish.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/quiz.css')}}">
+
+<script>
+    let roundsData = {{rounds_data|tojson}}
+    let totalScore = {{ total_score|int }};
+</script>
+
+<h2 class="title mt-3">Total Score: <span id="total-score">0</span> / 500</h2>
+<div class="center-button mt-5">
+  <a href="/quiz" class="btn btn-primary px-5 mx-5">Play Again</a>
+  <a href="/" class="btn btn-light px-5 mx-5">Home Screen</a>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+
+{% include "timeline_simple.html" %}
+
+<div id="images-container"></div>
+
+<div id="popup" style="display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+                       background: white; padding: 20px 30px; border: 2px solid #444; border-radius: 8px; z-index: 1000;
+                       max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+  <span id="popup-close" style="position: absolute; top: 8px; right: 12px; cursor: pointer; font-weight: bold;">✖</span>
+  <div id="popup-content"></div>
+</div>
+
+{% endblock %}
