@@ -27,6 +27,7 @@ import os
 app.secret_key = "BRONZECLOCKAPPSECRETKEY"
 
 # initial settings
+app.permanent_session_lifetime = timedelta(days=1)
 @app.before_request
 def reset_first_visit():
    if 'first_visit' not in session:

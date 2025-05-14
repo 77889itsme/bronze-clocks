@@ -16,15 +16,15 @@
   {
     "id": 2,
     "title": "Sword",
-    "subtitle": NaN,
+    "subtitle": "剑",
     "content": "Swords became the most iconic bronze artifacts of this period due to advancements in metallurgy and the shift toward infantry-based warfare. <br><br>These weapons were not only functional but also artistic masterpieces.",
     "image_path": "static/images/越王勾践剑2.png"
   },
   {
     "id": 3,
-    "title": "Human-Shaped Figures",
-    "subtitle": NaN,
-    "content": "Human-shaped bronze artifacts became prominent during the Qin and Han dynasties, which reflects philosophical ideals about immortality and cosmic harmony. <br><br> These figures were often used in burial contexts or as ceremonial objects.",
+    "title": "Figurative Forms",
+    "subtitle": "Objects Shaped Like Humans or Animals",
+    "content": "Human-shaped bronze artifacts became prominent during the Qin and Han dynasties, which reflects the advanced techniques of bronzeware casting. <br><br> These figures were often used in burial contexts or as ceremonial objects.",
     "image_path": "static/images/长信宫灯.jpg"
   }
 ]

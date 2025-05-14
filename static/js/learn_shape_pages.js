@@ -25,12 +25,12 @@ function updateButtons(){
     `);
 
     if (currentPage === 4) {
+        $('#return-btn').hide()
         quizBtn = `<a href="/quiz" class="btn btn-primary">Take the Quiz</a>`;
         learnPageBtn = `<a href="/learn" class="btn btn-light">Choose Another Section</a>`;
-
         $('#final-page').html(`
-            <div>${quizBtn}</div>
-            <div>${learnPageBtn}</div>
+            <div class="mx-5">${quizBtn}</div>
+            <div class="mx-5">${learnPageBtn}</div>
         `)
     }
 }
