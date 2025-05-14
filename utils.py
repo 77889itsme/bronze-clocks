@@ -14,13 +14,13 @@ def select_ids(data_len, size):
 
 def get_dynasty(year):
     year = int(year)
-    if year > -1600 & year <= -1046:
+    if (year > -1600) and (year <= -1046):
         return "Shang"
-    elif year > -1046 & year <= -770:
+    elif (year > -1046) and (year <= -770):
         return "Western Zhou"
-    elif year > -770 & year <= -221:
+    elif (year > -770) and (year <= -221):
         return "Eastern Zhou"
-    elif year > -221 & year <= 220:
+    elif (year > -221) and (year <= 220):
         return "Qin Han"
 
 def calculate_score(selected_year, start_time, end_time):
@@ -35,6 +35,7 @@ def calculate_score(selected_year, start_time, end_time):
         labels.extend(["total_correct", "correct_dynasty"])
     else:
         year_diff = min(abs(selected_year - start_time), abs(selected_year - end_time))
+        print(selected_dynasty, correct_dynasty, year_diff)
 
         if selected_dynasty == correct_dynasty:
             score = max(70, int(100 - year_diff / 50))

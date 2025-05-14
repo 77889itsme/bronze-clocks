@@ -59,28 +59,32 @@ function changeColor(metal) {
     }
 }
 
-$document.ready(function(){
-        let quizBtn = `<a href="/quiz" class="btn btn-primary">Take the Quiz</a>`;
-        let learnPageBtn = `<a href="/learn" class="btn btn-light">Choose Another Section</a>`;
+function checkStatus(){
+    let quizBtn = `<a href="/quiz" class="btn btn-primary">Take the Quiz</a>`;
+    let learnPageBtn = `<a href="/learn" class="btn btn-light">Choose Another Section</a>`;
 
-        $.ajax({
-            url: "/learn/check-status",
-            method: "GET",
-            success: function(response) {
-                if (response.all_done) {
-                    $('#final-page').html(`
-                        <div class="mx-5">${quizBtn}</div>
-                        <div class="mx-5">${learnPageBtn}</div>
-                    `);
-                } else {
-                    $('#final-page').html(`
-                        <div class="text-muted">Please finish all three learning sections first: Color, Motif, and Shape.</div>
-                        <div class="mx-5">${learnPageBtn}</div>
-                    `);
-                }
-            },
-            error: function(error) {
-                console.error("Error checking learning status:", error);
+    $.ajax({
+        url: "/learn/check-status",
+        method: "GET",
+        success: function(response) {
+            if (response.all_done) {
+                $('#final-page').html(`
+                    <div class="mx-5">${quizBtn}</div>
+                    <div class="mx-5">${learnPageBtn}</div>
+                `);
+            } else {
+                $('#final-page').html(`
+                    <div class="main-text">Please finish all three learning sections first: Color, Motif, and Shape.</div>
+                    <div class="mx-5">${learnPageBtn}</div>
+                `);
             }
-        });
+        },
+        error: function(error) {
+            console.error("Error checking learning status:", error);
+        }
+    });
+}
+
+$(document).ready(function () {
+    checkStatus()
 })

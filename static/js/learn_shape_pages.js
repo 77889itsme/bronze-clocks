@@ -40,7 +40,7 @@ function updateButtons(){
                     `);
                 } else {
                     $('#final-page').html(`
-                        <div class="text-muted">Please finish all three learning sections first: Color, Motif, and Shape.</div>
+                        <div class="main-text">Please finish all three learning sections first: Color, Motif, and Shape.</div>
                         <div class="mx-5">${learnPageBtn}</div>
                     `);
                 }
