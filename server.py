@@ -50,10 +50,6 @@ def learn_color_section_page():
 def learn_color_casting():
    return render_template('learn_color_casting.html')
 
-@app.route('/learn/color/decoration')
-def learn_color_decoration_start():
-   return redirect(url_for('learn_color_decoration', page_num=1))
-
 @app.route('/learn/color/decoration/<int:page_num>')
 def learn_color_decoration(page_num):
    id = page_num - 1
@@ -62,6 +58,9 @@ def learn_color_decoration(page_num):
 
 @app.route('/learn/color/patination')
 def learn_color_patination():
+   status = session.get("learning-status", {"motif": False, "color": False, "shape": False})
+   status["color"] = True
+   session["learning-status"] = status
    return render_template('learn_color_patination.html')
 
 @app.route('/learn/motif')
@@ -72,6 +71,10 @@ def learn_motif_section_page():
 def learn_motif_pages(page_num):
    id = page_num - 1
    info = motif_data[id]
+   if page_num == 4:
+      status = session.get("learning-status", {"motif": False, "color": False, "shape": False})
+      status["motif"] = True
+      session["learning-status"] = status
    return render_template('learn_motif_pages.html', page_num=page_num, info=info)
 
 @app.route('/learn/shape')
@@ -82,6 +85,10 @@ def learn_shape_section_page():
 def learn_shape_pages(page_num):
    id = page_num - 1
    info = shape_data[id]
+   if page_num == 4:
+      status = session.get("learning-status", {"motif": False, "color": False, "shape": False})
+      status["shape"] = True
+      session["learning-status"] = status
    return render_template('learn_shape_pages.html', page_num=page_num, info=info)
 
 @app.route('/quiz')
@@ -143,6 +150,18 @@ def finish():
    return render_template('finish.html', total_score=total_score, rounds_data=rounds_data)
 
 # AJAX FUNCTIONS
+@app.route("/learn/check-status", methods=['GET', 'POST'])
+def check_status():
+   status = session.get("learning-status", {
+        "motif": False,
+        "color": False,
+        "shape": False
+   })
+
+   all_done = status.get("motif") and status.get("color") and status.get("shape")
+   return {"all_done": all_done}
+
+
 @app.route("/quiz/score/<int:page_num>", methods=['GET', 'POST'])
 def get_scores(page_num):   
    submitted_data = request.get_json()
@@ -156,8 +175,6 @@ def get_scores(page_num):
    info = quiz_data[quiz_id]
 
    score, labels = calculate_score(selected_year, start_time, end_time)
-
-   print("Before:", session.get("scores", []))
 
    # save data to session
    scores = session.get("scores", [])
@@ -180,11 +197,8 @@ def get_scores(page_num):
          break
    if not updated:
       scores.append(current_score)
-
    session['scores'] = scores
    session.modified = True
-
-   print("After:", session.get("scores", []))
 
    return jsonify({
         "score": score,
