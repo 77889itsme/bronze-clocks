@@ -309,3 +309,23 @@ a {
 .hover-silver-grey:hover {
     fill: rgba(230, 230, 230, 0.8); 
 }
+
+.motif-progress {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    background-color: transparent;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.progress-dot-filled {
+    background-color: var(--accent-color);
+}

@@ -6,6 +6,7 @@
 <script>
     let info = {{info|tojson}}
     let currentPage = {{ page_num|int }};
+    let foundMotifs = new Set();
 </script>
 
 <div class="container">
@@ -43,15 +44,14 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="final-page" class="container"></div>
             </div>
             <div id="navButtonNext" class="col-md-1"></div>
         </div>
+        <div id="final-page" class="d-flex justify-content-center mt-5"></div>
     </div>
 
-    <div>
-        <a href="/learn/motif" class="btn btn-light">Return to Motif Overview</a>
+    <div  class="d-flex justify-content-center mt-5">
+        <a href="/learn/motif" class="btn btn-light" id="return-btn">Return to Motif Overview</a>
     </div>
 
 </div>

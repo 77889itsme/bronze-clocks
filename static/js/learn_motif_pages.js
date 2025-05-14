@@ -25,12 +25,12 @@ function updateButtons(){
     `);
 
     if (currentPage === 4) {
+        $('#return-btn').hide()
         quizBtn = `<a href="/quiz" class="btn btn-primary">Take the Quiz</a>`;
         learnPageBtn = `<a href="/learn" class="btn btn-light">Choose Another Section</a>`;
-
         $('#final-page').html(`
-            <div>${quizBtn}</div>
-            <div>${learnPageBtn}</div>
+            <div class="mx-5">${quizBtn}</div>
+            <div class="mx-5">${learnPageBtn}</div>
         `)
     }
 }
@@ -48,21 +48,22 @@ function updateView() {
 
     $('#motif-period').text(period);
 
-    motifs.forEach((motif) => {
+    motifs.forEach((motif, idx) => {
         $('#motif-image')    
             .attr('src', `/${info.image_path}`)
             .attr('alt', 'Motif Image')
             .addClass('img-fluid rounded');  
         
-        let $card = $('<div class="motif-card"></div>');
+        let $card = $('<div class="motif-card"></div>').attr('data-motif-index', idx);
+        let $image = $(`<img>`).attr('src', `/${motif.motif_image_path}`).addClass("motif-content-image")
         let $header = $('<div class="d-flex align-items-center justify-content-between"></div>');
         let $title = $(`<p>${motif.title}</p>`).addClass("subtitle bold");
-        let $content = $(`<p>${motif.content}</p>`).addClass("main-text")
-        let $image = $(`<img>`).attr('src', `/${motif.motif_image_path}`).addClass("motif-content-image")
         let $hint = $('<p style="font-size: 0.9rem; color: #888;">Click to expand</p>');
+        let $progress = $('<div class="motif-progress"></div>');
+        let $content = $(`<p>${motif.content}</p>`).addClass("main-text")
 
         $header.append($title).append($hint);
-        $card.append($image).append($header).append($content);
+        $card.append($image).append($header).append($progress).append($content);
         $card.on('click', function () {
             $(this).toggleClass('expanded');
             $($hint).empty()
@@ -70,7 +71,13 @@ function updateView() {
         $('#motif-content').append($card);
     
         let overlays = motif.overlay || [];
-        overlays.forEach((overlay) => {
+
+        overlays.forEach((overlay, overlayIdx) => {
+            let $dot = $('<span class="progress-dot"></span>')
+                .attr('data-dot-index', overlayIdx)
+                .attr('data-motif-index', idx);
+            $progress.append($dot);
+
             let $rect = $(`<div></div>`)
                 .addClass("hotspot")
                 .css({
@@ -80,25 +87,29 @@ function updateView() {
                     height: overlay.size_h + "rem"
                 })
                 .attr("data-answer", motif.title)
+                .attr("data-motif-index", idx)
+                .attr("data-overlay-index", overlayIdx);
             $(".motif-image-container").append($rect)
             
             $rect.on('click', function () {
                 let answer = $(this).data('answer');
                 $('#overlayAnswerText').text(answer);
+                let rectOffset = $(this).position();
+                let rectWidth = $(this).outerWidth();
+                let rectHeight = $(this).outerHeight();
                 $('#motifOverlay')
                     .css({
-                        left: overlay.position_left + overlay.size_w/3 + "rem",
-                        top: overlay.position_top  + overlay.size_h/3 + "rem",
-                        width: "10rem",
-                        height: "3rem",
+                        left: rectOffset.left + rectWidth / 2 - 50 + "px", 
+                        top: rectOffset.top + rectHeight / 2 - 20 + "px", 
+                        width: "100px",
+                        height: "60px",
                         display: 'flex'
                     })
                     .fadeIn();
-            });
             
-            $('#closeOverlay').on('click', function (e) {
-                e.stopPropagation(); 
-                $('#motifOverlay').fadeOut();
+            let motifIndex = motifs.findIndex(m => m.title === answer);
+            foundMotifs.add(motifIndex);
+            $(`.progress-dot[data-motif-index='${motifIndex}']`).eq(overlayIdx).addClass('progress-dot-filled');
             });
         });
     });

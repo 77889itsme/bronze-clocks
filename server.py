@@ -27,11 +27,9 @@ import os
 app.secret_key = "BRONZECLOCKAPPSECRETKEY"
 
 # initial settings
-app.permanent_session_lifetime = timedelta(days=5)
 @app.before_request
 def reset_first_visit():
-    # Set the 'first_visit' flag only if it is not already in the session
-    if 'first_visit' not in session:
+   if 'first_visit' not in session:
         session['first_visit'] = True
 
 # ROUTES
